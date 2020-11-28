@@ -19,7 +19,11 @@
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+	<script type='text/javascript'>
+		$(function() {
+			$('#tip').popover('show');
+		});
+	</script>
 </head>
 <body>
 <div id="wrapper" class="home-page">
@@ -29,9 +33,9 @@
 				<!-- social icon-->
 				<div class="col-sm-3">
 					<ul class="social-network">
-						<li><a style="color: #b0b0b0;" class="" href="../fr/index.html"><img width="15px" src="../img/lang/fr.png" alt="">Fr</a></li>
-						<li><a style="color: #b0b0b0;" class="" href="../it/index.html"><img width="15px" src="../img/lang/it.png" alt="">It</a></li>
-						<li><a style="color: #b0b0b0;" class="" href="../ar/index.html"><img width="15px" src="../img/lang/ar.png" alt="">Ar</a></li>
+						<li><a style="color: #b0b0b0;" class="" href="../fr/index.html" id="tip" data-toggle="popover" data-placement="right" title="francais"><img width="15px" src="../img/lang/fr.png" alt=""></a></li>
+						<li><a style="color: #b0b0b0;" class="" href="../it/index.html" id="tip" data-toggle="popover" data-placement="right" title="italiano"><img width="15px" src="../img/lang/it.png" alt=""></a></li>
+						<li><a style="color: #b0b0b0;" class="" href="../ar/index.html" id="tip" data-toggle="popover" data-placement="right" title="العربية"><img width="15px" src="../img/lang/ar.png" alt=""></a></li>
 					</ul>
 				</div>
 				<div class="col-sm-9">

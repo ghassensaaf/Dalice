@@ -73,15 +73,24 @@ ul.withArrow li{
 
 }
 ul.withArrow li span{
-margin-right: 10px;
-font-weight: 700;
-color: #ce292c;
-border: 1px solid;
-padding: 4px 8px;
-font-size: 11px;
-border-radius: 50%;
-height: 20px;
-width: 20px;
+
+margin-right: 10px;
+
+font-weight: 700;
+
+color: #ce292c;
+
+border: 1px solid;
+
+padding: 4px 8px;
+
+font-size: 11px;
+
+border-radius: 50%;
+
+height: 20px;
+
+width: 20px;
 }
 .line{
 	width: 20%;
@@ -294,8 +303,10 @@ header  .navbar-nav > li > a {
 .dishes{
 	background: url("../img/about-bg.jpg") center top no-repeat fixed;
 	background-size: cover;
-padding: 35px 0;
-	 color: #1b1b1b;
+
+padding: 35px 0;
+
+	 color: #1b1b1b;
 	position: relative;
 }
 .dropdown-menu li a:hover {
@@ -414,7 +425,6 @@ header ul.nav li ul li ul {
   border-right: none;
   border-bottom: none;
   border-left: none;
-  border-bottom-color: none;
   content:none;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {color: #ffffff;background: #ce292c;border-radius: 0;}
@@ -547,61 +557,6 @@ max-width: 100%;
 .home-about .info-box{
 
 }
-/* Testimonial
-----------------------------------*/
-.testimonial-area {
-padding: 0 0 0 0;
-margin:0;
-background: url(../img/low-poly01.jpg) fixed center center;
-background-size: cover;
--webkit-background-size: cover;
--moz-background-size: cover;
--ms-background-size: cover;
-}
-.testimonial-solid p {
-color: #000000;
-font-size: 16px;
-line-height: 30px;
-font-style: italic;
-}
-section.hero-text {
-	background: #F4783B;
-	padding:50px 0 50px 0;
-	color: #fff;
-}
-section.hero-text h1{
-	color: #fff;
-}
-
-/* Clients
------------------------------------- */
-#clients {
-  padding: 60px 0;
-  }
-  #clients .client .img {
-    height: 76px;
-    width: 138px;
-    cursor: pointer;
-    -webkit-transition: box-shadow .1s linear;
-    -moz-transition: box-shadow .1s linear;
-    transition: box-shadow .1s linear; }
-    #clients .client .img:hover {
-      cursor: pointer;
-      /*box-shadow: 0px 0px 2px 0px rgb(155, 155, 155);*/
-      border-radius: 8px; }
-  #clients .client .client1 {
-    background: url("../img/client1.png") 0 -75px; }
-    #clients .client .client1:hover {
-      background-position: 1px 0px; }
-  #clients .client .client2 {
-    background: url("../img/client2.png") 0 -75px; }
-    #clients .client .client2:hover {
-      background-position: -1px 0px; }
-  #clients .client .client3 {
-    background: url("../img/client3.png") 0 -76px; }
-    #clients .client .client3:hover {
-      background-position: 0px 0px; }
-
 
 /* Content
 ==================================== */
@@ -851,13 +806,7 @@ form#commentform textarea {
 	margin-bottom: 20px;
 }
 
-#call-to-action {
-	background: url(../images/bg/about.jpg) no-repeat;
-	background-attachment: fixed;
-	background-position: top center;
-	padding: 100px 0;
-	color: #fff;
-}
+
 
 .call-to-action h3 {
 	font-size: 40px;
