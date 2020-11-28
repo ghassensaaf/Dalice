@@ -967,6 +967,8 @@ blockquote cite a:visited 				{ color:#555; }
     -webkit-transition: .6s;
     -o-transition: .6s;
     transition: .6s;
+    left: 45%;
+    top:50%;
 }
 .preloader .preloader-circle2 {
     border-top-color: #0078ff;
