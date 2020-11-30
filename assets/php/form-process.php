@@ -40,7 +40,7 @@ $email_from='info@ditcsrl.com';
                   "Message: $message. \n";
 
   $to = "info@ditcsrl.com";
-  $headers ="From: Dalice ITC SRL <ditcsrl@ditcsrl.com>" . "\r\n" .
+  $headers ="From: Dalice ITC SRL <ditcsrlc@ditcsrl.com>" . "\r\n" .
         	"Reply-to : $email_from \r\n".
        		"MIME-Version: 1.0" . "\r\n" .
         	"Content-type: text/html; charset=utf-8". "\r\n" .
