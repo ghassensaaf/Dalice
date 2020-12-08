@@ -300,13 +300,15 @@ header  .navbar-nav > li > a {
 .services{
 
 }
+.carta{
+    height: 175px;
+}
+
 .dishes{
 	background: url("../img/about-bg.jpg") center top no-repeat fixed;
 	background-size: cover;
-
-padding: 35px 0;
-
-	 color: #1b1b1b;
+    padding: 35px 0;
+    color: #1b1b1b;
 	position: relative;
 }
 .dropdown-menu li a:hover {
@@ -906,7 +908,7 @@ background: #32c8de;
 }
 .info-blocks {margin-bottom: 15px;/* background: #efefef; */}
 .info-blocks i.icon-info-blocks {/* float: left; */color: #ce292c;font-size: 48px;min-width: 50px;margin-bottom: 15px;text-align: center;/* background: #ffffff; */width: 72px;/* height: 72px; *//* padding-top: 21px; *//* border: 1px solid #e0e0e0; *//* line-height: 75px; */width: 100%;}
-.info-blocks .info-blocks-in {padding: 46px 22px;overflow: hidden;border: 1px solid #dedede;text-align: center;background: #fff;}
+.info-blocks .info-blocks-in {padding: 46px 22px;overflow: hidden;border: 1px solid #dedede;text-align: center;background: #fff; height: 300px;}
 .info-blocks .info-blocks-in h3 {color: #202020;font-size: 22px;line-height: 28px;margin:0px;margin-bottom: 8px;/* font-weight: bold; */}
 .info-blocks .info-blocks-in p {font-size: 14px;}
 .info-blocks .info-blocks-in:hover{
