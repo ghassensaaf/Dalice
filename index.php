@@ -1,5 +1,5 @@
 <?php
-include  'assets/php/fonctions.php';
+include 'admin/inc/fonctions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -21,9 +21,6 @@ include  'assets/php/fonctions.php';
         <div class="preloader-inner position-relative">
             <div class="preloader-img pere-text">
                 <img class="fadeIn" src="img/logo.png" alt="">
-                <?php
-//                echo $ip[country]
-                ?>
             </div>
         </div>
     </div>
@@ -31,7 +28,8 @@ include  'assets/php/fonctions.php';
 <script src="js/custom.js"></script>
 <script>
     <?php
-    $ip=getLocationInfoByIp($_SERVER['REMOTE_ADDR']);
+    $f=new fonctions();
+    $ip=$f->getLocationInfoByIp()($_SERVER['REMOTE_ADDR']);
 
     if($ip[country]=='TN' or $ip[country]=='FR' or $ip[country]=='DZ' or $ip[country]=='MA')
     {
