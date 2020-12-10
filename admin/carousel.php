@@ -156,11 +156,33 @@ $carsItems=$f->get_car_item();
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Carousel</h1>
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> b1dc91d2fe29c991b467bd7cffa4fc51f1e579eb
                         <a href="" data-toggle="modal" data-target="#addcar" class="bg-gradient-primary" style="color:white; border-radius: 12.5%;padding: 10px  10px ;">Ajouter <i class="fa fa-plus"></i></a>
 
                     </div>
                     <div class="container" style="margin-bottom: 50px;">
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> Stashed changes
+                    </div>
+                    <div class="container">
+                        <div class="row ">
+                            <div class="col-2 offset-10">
+                                <a href="" data-toggle="modal" data-target="#addcar" class="" style="border-radius: 50%; background-color: white; border: 1px solid black; margin: 10px  10px ;"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+<<<<<<< Updated upstream
+=======
+>>>>>>> 720d65254ba342f7b5eddc540a04b0b86fe802a3
+>>>>>>> Stashed changes
+>>>>>>> b1dc91d2fe29c991b467bd7cffa4fc51f1e579eb
                         <div class="modal fade" id="addcar" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
