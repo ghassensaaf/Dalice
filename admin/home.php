@@ -1,9 +1,9 @@
 <?php
 include "../admin/inc/fonctions.php";
 $f=new fonctions();
-$carsItems=$f->get_car_item();
-$carsItems1=$f->get_car_item();
-$carsItems2=$f->get_car_item();
+$carsItems=$f->get_about_item();
+$carsItems1=$f->get_Mis_Vis_item();
+$carsItems2=$f->get_act_item();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -157,81 +157,42 @@ $carsItems2=$f->get_car_item();
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Carousel</h1>
-                    <a href="" data-toggle="modal" data-target="#addcar" class="bg-gradient-primary" style="color:white; border-radius: 12.5%;padding: 10px  10px ;">Ajouter <i class="fa fa-plus"></i></a>
+                    <h1 class="h3 mb-0 text-gray-800">À PROPOS DE NOUS</h1>
 
                 </div>
                 <div class="container" style="margin-bottom: 50px;">
 
-                    <div class="modal fade" id="addcar" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">Nouvelle image</h4>
-                                </div>
-                                <form id="addC" action="inc/forms.php" enctype="multipart/form-data" onsubmit="return submit_form(this)" method="post">
-                                    <div class="modal-body mx-3">
-                                        <div class="container-fluid">
-                                            <div class="row mb-1">
-                                                <div class="col-5 offset-1">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre</label></div>
-                                                        <input id="nom_ass" name="titre" type="text"  class="form-control" value="" placeholder="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-5">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Slogan</label></div>
-                                                        <input id="pre_ass" name="slogan" type="text" class="form-control" value="" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-1">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="img" class="control-label mb-1">Image</label></div>
-                                                        <input id="pre_ass" name="img" type="file" class="form-control" value="" placeholder="" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-1">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="ord" class="control-label mb-1">Order</label></div>
-                                                        <input id="pre_ass" name="ord" type="number" class="form-control" value="" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="modal-footer d-flex justify-content-center">
-                                            <input type="submit" class="btn btn-outline-success" value="Ajouter">
-                                            <input type="hidden" name="form" value="addCar">
-                                            <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
-                                        </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- Content Row -->
                 <div class="row">
                     <?php
                     $x=1;
-                    foreach ($carsItems as $item)
+                    foreach ($carsItems  as $item)
                     {
                         echo'
                             <div class="col-6">
+                            
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
+                                       <h3>'.$item["lang"].'</h3>
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <h3>'.$item["titre"].'</h3></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">'.$item["slogan"].'</div>
+                                                <h6>'.$item["intro"].'</h6></div>
+                                                
+                                            
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <h5>'.$item["p"].'</h5>  </div>
+                                            
+                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                <h6>'.$item["vals"].'</h6></div>
+                                            
+                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                                '.$item["conc"].'</div>
+                                            
                                         </div>
                                         <div class="col-auto">
-                                            <img width="100%" src="../img/slides/'.$item["image"].'" alt="">
+                                            <img width="100%" src="../img/'.$item["img"].'" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -252,30 +213,38 @@ $carsItems2=$f->get_car_item();
                                                 <div class="row mb-1">
                                                     <div class="col-5 offset-1">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre</label></div>
-                                                            <input id="nom_ass" name="titre" type="text"  class="form-control" value="'.$item["titre"].'" placeholder="">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">introduction</label></div>
+                                                            <textarea id="nom_ass" name="intro" type="text"  class="form-control"  placeholder="" >'.$item["intro"].' </textarea>
+                                                         
                                                         </div>
                                                     </div>
                                                     <div class="col-5">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Slogan</label></div>
-                                                            <input id="pre_ass" name="slogan" type="text" class="form-control" value="'.$item["slogan"].'" placeholder="">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">paragraphe</label></div>
+                                                            <textarea id="pre_ass" name="p" type="text" class="form-control" value="" placeholder="">'.$item["p"].'</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row mb-1">
-                                                    <div class="col-12">
+                                               <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="ord" class="control-label mb-1">Order</label></div>
-                                                            <input id="pre_ass" name="ord" type="number" class="form-control" value="'.$item["num"].'" placeholder="">
+                                                            <div style="text-align: center;"><label for="ord" class="control-label mb-1">Valeurs</label></div>
+                                                            <textarea id="pre_ass" name="vals" type="number" class="form-control" value="" placeholder="">'.$item["vals"].'</textarea>
+                                                        </div>
+                                                 </div>
+                                               
+                                                 <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">conclusion</label></div>
+                                                            <textarea id="pre_ass" name="conc" type="text" class="form-control" value="" placeholder="">'.$item["conc"].'</textarea>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                 </div>
                                                 <div class="row mb-1">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div style="text-align: center;"><label for="img" class="control-label mb-1">Image</label></div>
-                                                            <input id="pre_ass" name="img" type="file" class="form-control" value="'.$item["image"].'" placeholder="" >
+                                                            <input id="pre_ass" name="img" type="file" class="form-control" value="'.$item["img"].'" placeholder="" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -283,8 +252,8 @@ $carsItems2=$f->get_car_item();
 
                                         <div class="modal-footer d-flex justify-content-center">
                                             <input type="submit" class="btn btn-outline-success" value="Ajouter">
-                                            <input type="hidden" name="form" value="editCar">
-                                            <input type="hidden" name="id" value="'.$item["id"].'">
+                                            <input type="hidden" name="form" value="editAbout">
+                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
                                             <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
                                         </div>
                                     </form>
@@ -309,7 +278,7 @@ $carsItems2=$f->get_car_item();
                                             <div class="md-form mb-5">
                                               <p class="text-center text-danger">Voulez-vous vraiment supprimer cette image?</p>
                                             </div>
-                                            <input type="hidden" name="id" value="'.$item["id"].'">
+                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
                                             <input type="hidden" name="form" value="delCar">
 
                                           </div>
@@ -340,67 +309,16 @@ $carsItems2=$f->get_car_item();
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Carousel</h1>
-                    <a href="" data-toggle="modal" data-target="#addcar" class="bg-gradient-primary" style="color:white; border-radius: 12.5%;padding: 10px  10px ;">Ajouter <i class="fa fa-plus"></i></a>
+                    <h1 class="h3 mb-0 text-gray-800">Mission et Vision</h1>
 
                 </div>
                 <div class="container" style="margin-bottom: 50px;">
 
-                    <div class="modal fade" id="addcar" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">Nouvelle image</h4>
-                                </div>
-                                <form id="addC" action="inc/forms.php" enctype="multipart/form-data" onsubmit="return submit_form(this)" method="post">
-                                    <div class="modal-body mx-3">
-                                        <div class="container-fluid">
-                                            <div class="row mb-1">
-                                                <div class="col-5 offset-1">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre</label></div>
-                                                        <input id="nom_ass" name="titre" type="text"  class="form-control" value="" placeholder="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-5">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Slogan</label></div>
-                                                        <input id="pre_ass" name="slogan" type="text" class="form-control" value="" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-1">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="img" class="control-label mb-1">Image</label></div>
-                                                        <input id="pre_ass" name="img" type="file" class="form-control" value="" placeholder="" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-1">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="ord" class="control-label mb-1">Order</label></div>
-                                                        <input id="pre_ass" name="ord" type="number" class="form-control" value="" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="modal-footer d-flex justify-content-center">
-                                            <input type="submit" class="btn btn-outline-success" value="Ajouter">
-                                            <input type="hidden" name="form" value="addCar">
-                                            <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
-                                        </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- Content Row -->
                 <div class="row">
                     <?php
-                    $x=1;
+                    $x1=1;
                     foreach ($carsItems1 as $item)
                     {
                         echo'
@@ -409,25 +327,44 @@ $carsItems2=$f->get_car_item();
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <h3>'.$item["titre"].'</h3></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">'.$item["slogan"].'</div>
+                                         <h3>'.$item["lang"].'</h3>
+                                         
+                                            <div class="text-xs font-weight-bold  text-uppercase mb-1">
+                                             <div class="text-xs font-weight-bold text-danger  text-uppercase mb-1">
+                                           <h1>Mission</h1>
+                                           </div>
+                                                <h5>'.$item["mis"].'</h5></div>
+                                                <div class="col-auto">
+                                            <img width="100%" src="../img/'.$item["img_mis"].'" alt="">
                                         </div>
-                                        <div class="col-auto">
-                                            <img width="100%" src="../img/slides/'.$item["image"].'" alt="">
+                                           
                                         </div>
+                                        
+                                        <div class="col mr-2">
+                                       
+                                            <div class="text-xs font-weight-bold  text-uppercase mb-1">
+                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                              <h1>Vison</h1> 
+                                              </div>
+                                                <h5>'.$item["vis"].'</h5></div>
+                                                <div class="col-auto">
+                                            <img width="100%" src="../img/'.$item["img_vis"].'" alt="">
+                                        </div>
+                                            
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-3">
-                                            <a href="" data-toggle="modal" data-target="#edit'.$x.'" ><i class="fa fa-edit" ></i> edit</a>
+                                            <a href="" data-toggle="modal" data-target="#edit2'.$x1.'" ><i class="fa fa-edit" ></i> edit</a>
                                         </div>
-                                        <div class="modal fade" id="edit'.$x.'" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                        <div class="modal fade" id="edit2'.$x1.'" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header text-center">
-                                        <h4 class="modal-title w-100 font-weight-bold">Modifier </h4>
+                                        <h4 class="modal-title w-100 font-weight-bold"> Modifier </h4>
                                     </div>
                                     <form id="addC" action="inc/forms.php" enctype="multipart/form-data" onsubmit="return submit_form(this)" method="post">
                                         <div class="modal-body mx-3">
@@ -435,30 +372,30 @@ $carsItems2=$f->get_car_item();
                                                 <div class="row mb-1">
                                                     <div class="col-5 offset-1">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre</label></div>
-                                                            <input id="nom_ass" name="titre" type="text"  class="form-control" value="'.$item["titre"].'" placeholder="">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Mission</label></div>
+                                                            <textarea id="nom_ass" name="mis" type="text"  class="form-control"placeholder="">'.$item["mis"].'</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-5">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Slogan</label></div>
-                                                            <input id="pre_ass" name="slogan" type="text" class="form-control" value="'.$item["slogan"].'" placeholder="">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Vison</label></div>
+                                                            <textarea id="pre_ass" name="vis" type="text" class="form-control"  placeholder="">'.$item["vis"].'</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-1">
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="ord" class="control-label mb-1">Order</label></div>
-                                                            <input id="pre_ass" name="ord" type="number" class="form-control" value="'.$item["num"].'" placeholder="">
+                                                            <div style="text-align: center;"><label for="img" class="control-label mb-1">Image Mission</label></div>
+                                                            <input id="pre_ass" name="img_mis" type="file" class="form-control" value="'.$item["img_mis"].'" placeholder="" >
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-1">
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="img" class="control-label mb-1">Image</label></div>
-                                                            <input id="pre_ass" name="img" type="file" class="form-control" value="'.$item["image"].'" placeholder="" >
+                                                            <div style="text-align: center;"><label for="img" class="control-label mb-1">Image Vision</label></div>
+                                                            <input id="pre_ass" name="img_vis" type="file" class="form-control" value="'.$item["img_vis"].'" placeholder="" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -466,8 +403,8 @@ $carsItems2=$f->get_car_item();
 
                                         <div class="modal-footer d-flex justify-content-center">
                                             <input type="submit" class="btn btn-outline-success" value="Ajouter">
-                                            <input type="hidden" name="form" value="editCar">
-                                            <input type="hidden" name="id" value="'.$item["id"].'">
+                                            <input type="hidden" name="form" value="editMisVal">
+                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
                                             <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
                                         </div>
                                     </form>
@@ -476,9 +413,9 @@ $carsItems2=$f->get_car_item();
                         </div>
                     </div>
                                         <div class="col-3">
-                                            <a href="" data-toggle="modal" data-target="#del'.$x.'"> <i class="fa fa-trash"></i> supprimer</a>
+                                            <a href="" data-toggle="modal" data-target="#del2'.$x1.'"> <i class="fa fa-trash"></i> supprimer</a>
                                         </div>
-                                        <div class="modal fade" id="del'.$x.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                        <div class="modal fade" id="del2'.$x1.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
                                       <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                           <div class="modal-header text-center">
@@ -492,7 +429,7 @@ $carsItems2=$f->get_car_item();
                                             <div class="md-form mb-5">
                                               <p class="text-center text-danger">Voulez-vous vraiment supprimer cette image?</p>
                                             </div>
-                                            <input type="hidden" name="id" value="'.$item["id"].'">
+                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
                                             <input type="hidden" name="form" value="delCar">
 
                                           </div>
@@ -512,7 +449,7 @@ $carsItems2=$f->get_car_item();
                         </div>
                         
                             ';
-                        $x++;
+                        $x1++;
                     }
                     ?>
 
@@ -523,90 +460,65 @@ $carsItems2=$f->get_car_item();
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Carousel</h1>
-                    <a href="" data-toggle="modal" data-target="#addcar" class="bg-gradient-primary" style="color:white; border-radius: 12.5%;padding: 10px  10px ;">Ajouter <i class="fa fa-plus"></i></a>
-
+                    <h1 class="h3 mb-0 text-gray-800">ACTIVITÉS</h1>
                 </div>
                 <div class="container" style="margin-bottom: 50px;">
 
-                    <div class="modal fade" id="addcar" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">Nouvelle image</h4>
-                                </div>
-                                <form id="addC" action="inc/forms.php" enctype="multipart/form-data" onsubmit="return submit_form(this)" method="post">
-                                    <div class="modal-body mx-3">
-                                        <div class="container-fluid">
-                                            <div class="row mb-1">
-                                                <div class="col-5 offset-1">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre</label></div>
-                                                        <input id="nom_ass" name="titre" type="text"  class="form-control" value="" placeholder="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-5">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Slogan</label></div>
-                                                        <input id="pre_ass" name="slogan" type="text" class="form-control" value="" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-1">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="img" class="control-label mb-1">Image</label></div>
-                                                        <input id="pre_ass" name="img" type="file" class="form-control" value="" placeholder="" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-1">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <div style="text-align: center;"><label for="ord" class="control-label mb-1">Order</label></div>
-                                                        <input id="pre_ass" name="ord" type="number" class="form-control" value="" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="modal-footer d-flex justify-content-center">
-                                            <input type="submit" class="btn btn-outline-success" value="Ajouter">
-                                            <input type="hidden" name="form" value="addCar">
-                                            <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
-                                        </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- Content Row -->
                 <div class="row">
                     <?php
                     $x=1;
+
                     foreach ($carsItems2 as $item)
                     {
                         echo'
                             <div class="col-6">
+                            
                             <div class="card border-left-success shadow h-100 py-2">
+                            <h3>'.$item["lang"].'</h3>
                                 <div class="card-body">
+                                
                                     <div class="row no-gutters align-items-center">
+                                    
                                         <div class="col mr-2">
+                                         
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <h3>'.$item["titre"].'</h3></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">'.$item["slogan"].'</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <img width="100%" src="../img/slides/'.$item["image"].'" alt="">
+                                                <h5>'.$item["titre"].'</h5></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">'.$item["val"].'</div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card-body">
+                                
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                   
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <h5>'.$item["titre2"].'</h5></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">'.$item["val2"].'</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-body">
+                                
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                        
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <h5>'.$item["titre3"].'</h5></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">'.$item["val3"].'</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-3">
-                                            <a href="" data-toggle="modal" data-target="#edit'.$x.'" ><i class="fa fa-edit" ></i> edit</a>
+                                            <a href="" data-toggle="modal" data-target="#edit3'.$x.'" ><i class="fa fa-edit" ></i> edit</a>
                                         </div>
-                                        <div class="modal fade" id="edit'.$x.'" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                        <div class="modal fade" id="edit3'.$x.'" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header text-center">
@@ -618,30 +530,38 @@ $carsItems2=$f->get_car_item();
                                                 <div class="row mb-1">
                                                     <div class="col-5 offset-1">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre</label></div>
-                                                            <input id="nom_ass" name="titre" type="text"  class="form-control" value="'.$item["titre"].'" placeholder="">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre1</label></div>
+                                                            <input id="nom_ass" name="titre1" type="text"  class="form-control" value="'.$item["titre"].'" placeholder="">
                                                         </div>
                                                     </div>
-                                                    <div class="col-5">
+                                                     <div class="col-5 offset-1">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Slogan</label></div>
-                                                            <input id="pre_ass" name="slogan" type="text" class="form-control" value="'.$item["slogan"].'" placeholder="">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Secteur AGRICOLE</label></div>
+                                                              <textarea id="pre_ass" name="val" type="text" class="form-control"  placeholder="">'.$item["val"].'</textarea>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row mb-1">
-                                                    <div class="col-12">
+                                                     <div class="col-5 offset-1">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="ord" class="control-label mb-1">Order</label></div>
-                                                            <input id="pre_ass" name="ord" type="number" class="form-control" value="'.$item["num"].'" placeholder="">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre2</label></div>
+                                                            <input id="nom_ass" name="titre2" type="text"  class="form-control" value="'.$item["titre2"].'" placeholder="">
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row mb-1">
-                                                    <div class="col-12">
+                                                     <div class="col-5 offset-1">
                                                         <div class="form-group">
-                                                            <div style="text-align: center;"><label for="img" class="control-label mb-1">Image</label></div>
-                                                            <input id="pre_ass" name="img" type="file" class="form-control" value="'.$item["image"].'" placeholder="" >
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Autres secteurs</label></div>
+                                                              <textarea id="pre_ass" name="val2" type="text" class="form-control"  placeholder="">'.$item["val2"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre3</label></div>
+                                                            <input id="nom_ass" name="titre3" type="text"  class="form-control" value="'.$item["titre3"].'" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Autres services</label></div>
+                                                            <textarea id="pre_ass" name="val3" type="text" class="form-control"  placeholder="">'.$item["val3"].'</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -649,8 +569,8 @@ $carsItems2=$f->get_car_item();
 
                                         <div class="modal-footer d-flex justify-content-center">
                                             <input type="submit" class="btn btn-outline-success" value="Ajouter">
-                                            <input type="hidden" name="form" value="editCar">
-                                            <input type="hidden" name="id" value="'.$item["id"].'">
+                                            <input type="hidden" name="form" value="editVal">
+                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
                                             <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
                                         </div>
                                     </form>
@@ -659,9 +579,9 @@ $carsItems2=$f->get_car_item();
                         </div>
                     </div>
                                         <div class="col-3">
-                                            <a href="" data-toggle="modal" data-target="#del'.$x.'"> <i class="fa fa-trash"></i> supprimer</a>
+                                            <a href="" data-toggle="modal" data-target="#del3'.$x.'"> <i class="fa fa-trash"></i> supprimer</a>
                                         </div>
-                                        <div class="modal fade" id="del'.$x.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                        <div class="modal fade" id="del3'.$x.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
                                       <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                           <div class="modal-header text-center">
@@ -675,7 +595,7 @@ $carsItems2=$f->get_car_item();
                                             <div class="md-form mb-5">
                                               <p class="text-center text-danger">Voulez-vous vraiment supprimer cette image?</p>
                                             </div>
-                                            <input type="hidden" name="id" value="'.$item["id"].'">
+                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
                                             <input type="hidden" name="form" value="delCar">
 
                                           </div>
@@ -691,8 +611,61 @@ $carsItems2=$f->get_car_item();
                                     </div>
                                     
                                 </div>
+                       
                             </div>
                         </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                       
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                             ';
                         $x++;

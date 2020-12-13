@@ -1,3 +1,8 @@
+<?php
+include "../admin/inc/fonctions.php";
+$f=new fonctions();
+$carsItems=$f->get_Cor_item();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,14 +123,14 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                     src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -150,100 +155,189 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">À PROPOS DE NOUS</h1>
+
                     </div>
+                    <div class="container" style="margin-bottom: 50px;">
 
-                    <!-- Content Row -->
-                    <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <?php
+                            $x=1;
+                            foreach ($carsItems  as $item)
+                            {
+                                echo'
+                            <div class="col-6">
+                            
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                       <h3>Numéro :</h3>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <h6>'.$item["tel"].'</h6>
+                                                </div>
+                                                 <h3>E-mail :</h3>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <h6>'.$item["email"].'</h6>
+                                                </div>
+                                                 <h3>Adresse</h3>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <h6>'.$item["adresse"].'</h6>
+                                                </div>
+                                                 <h3>Lien Facebook :</h3>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <h6>'.$item["fb"].'</h6>
+                                                </div>
+                                                 <h3>Lien instgram  :</h3>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <h6>'.$item["insta"].'</h6>
+                                                </div>
+                                                 <h3>Lien Linkedin :</h3>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <h6>'.$item["linkedin"].'</h6>
+                                                </div>
+                                                <h3>Lien Twitter :</h3>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <h6>'.$item["twitter"].'</h6>
+                                                </div>
+                                                
+                                            
+                                              
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <a href="" data-toggle="modal" data-target="#edit'.$x.'" ><i class="fa fa-edit" ></i> edit</a>
+                                        </div>
+                                        <div class="modal fade" id="edit'.$x.'" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-weight-bold">Modifier </h4>
+                                    </div>
+                                    <form id="addC" action="inc/forms.php" enctype="multipart/form-data" onsubmit="return submit_form(this)" method="post">
+                                        <div class="modal-body mx-3">
+                                            <div class="container-fluid">
+                                                <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Numéro</label></div>
+                                                            <textarea id="nom_ass" name="tel" type="text"  class="form-control"  placeholder="" >'.$item["tel"].' </textarea>
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">E-mail</label></div>
+                                                            <textarea id="pre_ass" name="email" type="text" class="form-control" value="" placeholder="">'.$item["email"].'</textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                               <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="ord" class="control-label mb-1">Adresse</label></div>
+                                                            <textarea id="pre_ass" name="adresse" type="number" class="form-control" value="" placeholder="">'.$item["adresse"].'</textarea>
+                                                        </div>
+                                                 </div>
+                                               
+                                                 <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Lien instgram </label></div>
+                                                            <textarea id="pre_ass" name="insta" type="text" class="form-control" value="" placeholder="">'.$item["insta"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                  <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Lien Twitter</label></div>
+                                                            <textarea id="nom_ass" name="twitter" type="text"  class="form-control"  placeholder="" >'.$item["twitter"].' </textarea>
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Lien Linkedin</label></div>
+                                                            <textarea id="pre_ass" name="linkedin" type="text" class="form-control" value="" placeholder="">'.$item["linkedin"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Lien Facebook</label></div>
+                                                            <textarea id="nom_ass" name="fb" type="text"  class="form-control"  placeholder="" >'.$item["fb"].' </textarea>
+                                                         
+                                                        </div>
+                                                    </div>
+                                                  
+                                                    
+                                                </div>
+                                                
                                             </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <input type="submit" class="btn btn-outline-success" value="Ajouter">
+                                            <input type="hidden" name="form" value="editCor">
+                                            <input type="hidden" name="lang" value="'.$item["id"].'">
+                                            <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                                        <div class="col-3">
+                                            <a href="" data-toggle="modal" data-target="#del'.$x.'"> <i class="fa fa-trash"></i> supprimer</a>
+                                        </div>
+                                        <div class="modal fade" id="del'.$x.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header text-center">
+                                            <h4 class="modal-title w-100 font-weight-bold">Supprimer Image</h4>
+                                          </div>
+                                          <form action="inc/forms.php" method="post">
+                                            <div class="modal-body mx-3">
+                                            <div class="md-form mb-5">
+                                              <input type="text" id="orangeForm-name" name="" class="form-control validate text-center" value="" disabled>
+                                            </div>
+                                            <div class="md-form mb-5">
+                                              <p class="text-center text-danger">Voulez-vous vraiment supprimer cette image?</p>
+                                            </div>
+                                            <input type="hidden" name="lang" value="'.$item["id"].'">
+                                            <input type="hidden" name="form" value="delCar">
 
+                                          </div>
+                                          <div class="modal-footer d-flex justify-content-center">
+                                            <input type="button" class="btn btn-outline-success" data-dismiss="modal" aria-label="Close" value="Annuler">
+                                            <input type="submit" class="btn btn-outline-danger" value="Confirmer">
+
+                                          </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                            ';
+                                $x++;
+                            }
+                            ?>
+
+                        </div>
+                    </div>
+                    <!-- /.container-fluid -->
 
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 

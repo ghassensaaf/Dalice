@@ -10,7 +10,7 @@ class config
         {
             try
             {
-                self::$instance = new PDO('mysql:host=localhost:3308;dbname=dalice', 'root', '');
+                self::$instance = new PDO('mysql:host=localhost:3306;dbname=dalice', 'root', '');
                 self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             catch(Exception $e)

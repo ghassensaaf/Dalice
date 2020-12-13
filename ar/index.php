@@ -1,3 +1,26 @@
+<?php
+include "../admin/inc/fonctions.php";
+$f=new fonctions();
+$carsItems=$f->get_car_item();
+$home=$f->get_about_item("AR");
+$home2=$f->get_Mis_Vis_item("AR");
+$home3=$f->get_act_item("AR");
+$home4=$f->get_Cor_item();
+foreach ($home as $About){
+
+}
+foreach ($home2 as $About2){
+
+}
+foreach ($home3 as $About3){
+
+}
+foreach ($home4 as $About4)
+{
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,8 +64,8 @@
 				<div class="col-sm-9">
 					<div class="row">
 						<ul class="info">
-							<li><span><a style="color: gray" href="mailto:info@ditcsrl.com"><i class="icon-info-blocks material-icons">question_answer</i> info@ditcsrl.com</a></span></li>
-							<li><span><a style="color: gray" href="tel:+393713729649"><i class="icon-info-blocks material-icons">perm_phone_msg</i>+393713729649</a></span></li>
+							<li><span><a style="color: gray" href="mailto:info@ditcsrl.com"><i class="icon-info-blocks material-icons">question_answer</i> <?php echo $About4['email'] ?> </a></span></li>
+							<li><span><a style="color: gray" href="tel:+393713729649"><i class="icon-info-blocks material-icons">perm_phone_msg</i><?php echo $About4['tel'] ?></a></span></li>
 						</ul>
 						<div class="clr"></div>
 					</div>
@@ -118,26 +141,19 @@
 				<div class="col-md-12">
 					<div class="section-title text-center">
 						<h2 style="color:#ce292c;">معلومات عنا</h2>
-						<p>Dalice International Trading Company SRL هي شركة مقرها إيطاليا ,<br> تم إنشاؤها لتلائم احتياجات وتفضيلات العملاء مع أفضل المنتجات في العالم.</p>
+<p><?php echo $About['intro'] ?></p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
 					<div class="about-image">
-						<img src="../img/about.jpg" alt="About Images">
+						<img src="../img/<?php echo $About['img'] ?>" alt="About Images">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-6">
 					<div class="about-text ">
-						<p class="text-right">	نخلق لعملائنا بيئة دولية حيث يتم ضمان منتجات عالية الجودة والنزاهة والشفافية لتجربة فريدة من نوعها.
-							نعمل كجسر بين العملاء والسوق الدولية.
-
-							تمثل DITC SRL خط شبكة موثوق. نحن متخصصون بشكل رئيسي في المعدات والمنتجات الزراعية في جميع أنحاء العالم ، مع إيلاء اهتمام خاص لحوض البحر الأبيض المتوسط.
-
-							تأسست DITC بفضل الجهود المشتركة وخبرات العديد من الشركاء في مجالات التجارة والزراعة.
-
-							شركاؤنا موجودون في جميع أنحاء العالم ، في أوروبا وشمال إفريقيا والشرق الأوسط والصين وتركيا
+						<p class="text-right">	<?php echo $About['p'] ?>
 
 						</p>
 						<h4 class="text-right" style="color:#ce292c; margin-top:15px;"> <b>قيمنا الأساسية</b> </h4>
@@ -154,9 +170,7 @@
 
 			</div>
 			<div class="section-title text-center">
-				<p>نحن نوحد جهودنا ، مسترشدين بقيمنا ، لضمان تجربة أفضل وفريدة من نوعها لعملائنا ومستهلكينا وشركائنا.
-					<br>
-					نجمع جهودنا مع إبداعنا للحفاظ على أهدافنا وغاياتنا التنظيمية وتحقيقها
+				<p> <?php echo $About['conc'] ?>
 				</p>
 			</div>
 
@@ -170,7 +184,7 @@
         	<div class="col-md-4   md-margin-bottom-40">
 						<div class="card small">
         			<div class="card-image">
-        				<img class="img-responsive" src="../img/service1.jpg" alt="">
+        				<img class="img-responsive" src="../img/<?php echo $About2['img_mis'] ?>" alt="">
         				<span class="card-title text-right">مهمتنا</span>
               </div>
               <div class="card-content carta">
@@ -187,12 +201,12 @@
 			   	<div class="col-md-4 md-margin-bottom-40">
 						<div class="card small">
               <div class="card-image">
-                <img class="img-responsive" src="../img/service2.jpg" alt="">
+                <img class="img-responsive" src="../img/<?php echo $About2['img_vis'] ?>" alt="">
                 <span class="card-title text-right">رؤيتنا</span>
               </div>
               <div class="card-content carta">
 								<ul style="margin-left:15px; direction: rtl;">
-									<li style="list-style-type: circle;">بناء وتأسيس صلة دائمة بيننا وبين شركائنا والشركات حول العالم ، مما يضمن بيئة عمل مستدامة وتعاونية ومهنية</li>
+									<li style="list-style-type: circle;"><?php echo $About2['vis'] ?></li>
 								</ul>
               </div>
             </div>
@@ -215,32 +229,28 @@
         	<div class="col-sm-4 info-blocks">
             <div class="info-blocks-in" >
 							<i class="icon-info-blocks material-icons">agriculture</i>
-              <h3>قطاع الزراعة</h3>
+              <h3><?php echo $About3['titre'] ?></h3>
 							<div class="line"></div>
               <ul style="direction: rtl">
-              	<li> المعدات</li>
-              	<li>المبيدات والأسمدة</li>
-              	<li>البذور</li>
-              	<li>خضروات</li>
-              	<li>الفواكه</li>
+              	<li> <?php echo $About3['val'] ?></li>
               </ul>
             </div>
           </div>
           <div class="col-sm-4 info-blocks">
             <div class="info-blocks-in">
 					 		<i class="icon-info-blocks material-icons">trending_up</i>
-	            <h3>قطاعات أخرى</h3>
+	            <h3><?php echo $About3['titre2'] ?></h3>
 							<div class="line"></div>
-	            <p class="text-right">نقوم بإجراء تحليل شامل ومفصل للسوق من أجل تلبية احتياجات عملائنا بأفضل المنتجات في السوق الدولية ، بغض النظر عن نوع المنتج</p>
+	            <p class="text-right"><?php echo $About3['val2'] ?></p>
             </div>
           </div>
           <div class="col-sm-4 info-blocks">
             <div class="info-blocks-in">
               <i class="icon-info-blocks material-icons">card_travel</i>
-              <h3>خدمات أخرى</h3>
+              <h3><?php echo $About3['titre3'] ?></h3>
 							<div class="line"></div>
               <ul style="direction: rtl">
-              	<li class="text-right">تنظيم المعارض التجارية
+              	<li class="text-right"><?php echo $About3['val3'] ?>
 					<ul style="direction: rtl">
 										<li class="text-right"><span class="fa fa-angle-left"></span> تونس</li>
 										<li class="text-right"><span class="fa fa-angle-left"></span>ايطاليا</li>
@@ -271,12 +281,10 @@
 						<h5 class="widgetheading">تفاصيل الاتصال الخاصة بنا</h5>
 						<address>
 							<strong>Dalice ITC</strong><br>
-							VIA DEL GUERCINO 2<br>
-							CASALECCHIO DI RENO<br>
-							BOLOGNA 40033 ITALY.</address>
+                            <?php echo $About4['adresse'] ?></address>
 						<p>
-							<i class="icon-phone"></i> <a href="tel:+393713729649">+393713729649</a>  <br>
-							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com">info@ditcsrl.com</a>
+							<i class="icon-phone"></i> <a href="tel:+393713729649"><?php echo $About4['tel'] ?></a>  <br>
+							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com"><?php echo $About4['email'] ?></a>
 						</p>
 					</div>
 				</div>
@@ -290,10 +298,10 @@
 					</div>
 					<div class="">
 						<ul class="social-network">
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.instagram.com/ditcsrl/" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['fb'] ?>" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['insta'] ?>" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['twitter'] ?>" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['linkedin'] ?>" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
 						</ul>
 					</div>
 				</div>

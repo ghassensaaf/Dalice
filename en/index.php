@@ -2,6 +2,27 @@
 include "../admin/inc/fonctions.php";
 $f=new fonctions();
 $carsItems=$f->get_car_item();
+$home=$f->get_about_item("EN");
+$home2=$f->get_Mis_Vis_item("EN");
+$home3=$f->get_act_item("EN");
+$home4=$f->get_Cor_item();
+
+foreach ($home2 as $About2)
+{
+
+}
+foreach ($home as $About){
+
+}
+foreach ($home3 as $About3){
+
+}
+foreach ($home4 as $About4)
+{
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,8 +67,10 @@ $carsItems=$f->get_car_item();
 				<div class="col-sm-9">
 					<div class="row">
 						<ul class="info">
-							<li><span><a style="color: gray" href="mailto:info@ditcsrl.com"><i class="icon-info-blocks material-icons">question_answer</i> info@ditcsrl.com</a></span></li>
-							<li><span><a style="color: gray" href="tel:+393713729649"><i class="icon-info-blocks material-icons">perm_phone_msg</i>+390510232314</a></span></li>
+							<li><span><a style="color: gray" href="mailto:info@ditcsrl.com"><i class="icon-info-blocks material-icons">question_answer</i> <?php  echo $About4['email'];
+                                        ?></a></span></li>
+							<li><span><a style="color: gray" href="tel:+393713729649"><i class="icon-info-blocks material-icons">perm_phone_msg</i><?php  echo $About4['tel'];
+                                        ?></a></span></li>
 						</ul>
 						<div class="clr"></div>
 					</div>
@@ -107,6 +130,7 @@ $carsItems=$f->get_car_item();
             </ul>
         </div>
 	<!-- end slider -->
+
 	</section>
 	<section class="section-padding gray-bg">
 		<div class="container">
@@ -114,17 +138,16 @@ $carsItems=$f->get_car_item();
 				<div class="col-md-12">
 					<div class="section-title text-center">
 						<h2 style="color:#ce292c;">Our Business</h2>
-						<p>Dalice International Trading Company SRL is an italian based company,<br> established to intertwine customers’ needs and preferences with the best products in the world.</p>
+						<p><?php  echo $About['intro'];
+                            ?></p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
 					<div class="about-text">
-						<p>	We create an international environment for our customers where high-quality-products, integrity, and transparency are guaranteed for unique experience.  We serve as the bridge between clients and the international market.
-D.I.T.C SRL represents a reliable networkline. We specialize mainly in agriculture equipment and products worldwide with a special focus on the Mediterranean basin.
-D.I.T.C is born thanks to the combined efforts and experience of several partners in the trading and agriculture fields.
-Our partners are across the Globe from Europe, North Africa, Middle East, China, Turkey...ect
+						<p>	<?php  echo $About['p'];
+                            ?>
 </p>
 						<h4 style="color:#ce292c; margin-top:15px;"> <b>Our Core Values</b> </h4>
 						<ul class="withArrow">
@@ -139,13 +162,14 @@ Our partners are across the Globe from Europe, North Africa, Middle East, China,
 				</div>
 				<div class="col-md-6 col-sm-6">
 					<div class="about-image">
-						<img src="../img/about.jpg" alt="About Images">
+						<img src="../img/<?php  echo $About['img'];
+                        ?>" alt="About Images">
 					</div>
 				</div>
 			</div>
 			<div class="section-title text-center">
-				<p>We combine our efforts guided by our values, to ensure a better, unique experience for our customers,<br> clients and partners.
-	We intertwine our efforts with our creativity to maintain and achieve our organizational goals and objectives.  </p>
+				<p><?php  echo $About['conc'];
+                    ?>  </p>
 			</div>
 
 		</div>
@@ -158,7 +182,7 @@ Our partners are across the Globe from Europe, North Africa, Middle East, China,
         			<div class="col-md-4   md-margin-bottom-40">
 						<div class="card small">
 							<div class="card-image">
-								<img class="img-responsive" src="../img/service1.jpg" alt="">
+								<img class="img-responsive" src="../img/<?php  echo $About2['img_mis'];?>" alt="">
 								<span class="card-title">Mission</span>
 							</div>
 							<div class="card-content carta">
@@ -175,12 +199,12 @@ Our partners are across the Globe from Europe, North Africa, Middle East, China,
 					<div class="col-md-4 md-margin-bottom-40">
 						<div class="card small">
 							<div class="card-image">
-								<img class="img-responsive" src="../img/service2.jpg" alt="">
+								<img class="img-responsive" src="../img/<?php  echo $About2['img_vis'];?>" alt="">
 								<span class="card-title">Vision</span>
 							</div>
 							<div class="card-content carta">
 								<ul style="margin-left:15px;">
-									<li style="list-style-type: circle;">Building and Establishing a sustainable link between us, partners and companies worldwide, ensuring a sustainable, cooperative, and professional work environment.</li>
+									<li style="list-style-type: circle;"><?php  echo $About2['vis'];?></li>
 								</ul>
 							</div>
 						</div>
@@ -203,10 +227,10 @@ Our partners are across the Globe from Europe, North Africa, Middle East, China,
         	<div class="col-sm-4 info-blocks">
             	<div class="info-blocks-in" >
 					<i class="icon-info-blocks material-icons">agriculture</i>
-					<h3>AGRICULTURE Sector</h3>
+					<h3><?php echo $About3['titre'];?></h3>
 						<div class="line"></div>
               				<ul>
-              					<li>Equipments</li>
+              					<li><?php echo $About3['val'];?></li>
 								<li>Pesticides and Fertilizers</li>
 								<li>Seeds</li>
 								<li>Vegetables</li>
@@ -217,18 +241,18 @@ Our partners are across the Globe from Europe, North Africa, Middle East, China,
           <div class="col-sm-4 info-blocks">
             <div class="info-blocks-in">
 					 		<i class="icon-info-blocks material-icons">trending_up</i>
-	            <h3>Other Sectors</h3>
+	            <h3><?php echo $About3['titre2'];?></h3>
 							<div class="line"></div>
-	            <p>We conduct a deep detailed market analysis inorder to meet our customers' needs with the best products in the international market, regardless of product's typology. </p>
+	            <p><?php echo $About3['val2'];?> </p>
             </div>
           </div>
           <div class="col-sm-4 info-blocks">
             <div class="info-blocks-in">
               <i class="icon-info-blocks material-icons">card_travel</i>
-              <h3>Other services</h3>
+              <h3><?php echo $About3['titre3'];?></h3>
 							<div class="line"></div>
               <ul>
-              	<li>Organizing trade fairs
+              	<li><?php echo $About3['val3'];?>
 									<ul>
 										<li><span class="fa fa-angle-right"></span> Tunisia</li>
 										<li><span class="fa fa-angle-right"></span> Italy</li>
@@ -259,12 +283,13 @@ Our partners are across the Globe from Europe, North Africa, Middle East, China,
 						<h5 class="widgetheading">Our Contact</h5>
 						<address>
 							<strong>Dalice ITC</strong><br>
-							VIA DEL GUERCINO 2<br>
-							CASALECCHIO DI RENO<br>
-							BOLOGNA 40033 ITALY.</address>
+                            <?php  echo $About4['adresse'];
+                            ?></address>
 						<p>
-							<i class="icon-phone"></i> <a href="tel:+390510232314">+393713729649</a>  <br>
-							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com">info@ditcsrl.com</a>
+							<i class="icon-phone"></i> <a href="tel:+390510232314"><?php  echo $About4['tel'];
+                                ?></a>  <br>
+							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com"><?php  echo $About4['email'];
+                                ?></a>
 						</p>
 					</div>
 				</div>
@@ -278,10 +303,14 @@ Our partners are across the Globe from Europe, North Africa, Middle East, China,
 					</div>
 					<div class="">
 						<ul class="social-network">
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.instagram.com/ditcsrl/" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php  echo $About4['fb'];
+                                ?>" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php  echo $About4['insta'];
+                                ?>" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php  echo $About4['twitter'];
+                                ?>" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php  echo $About4['linkedin'];
+                                ?>" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
 						</ul>
 					</div>
 				</div>

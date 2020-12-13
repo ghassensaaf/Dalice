@@ -1,3 +1,27 @@
+<?php
+include "../admin/inc/fonctions.php";
+$f=new fonctions();
+$carsItems=$f->get_car_item();
+$home=$f->get_about_item("FR");
+$home2=$f->get_Mis_Vis_item("FR");
+$home3=$f->get_act_item("FR");
+$home4=$f->get_Cor_item();
+foreach ($home as $About){
+
+}
+foreach ($home2 as $About2)
+{
+
+}
+foreach ($home3 as $About3)
+{
+
+}
+foreach ($home4 as $About4){
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,8 +65,8 @@
 				<div class="col-sm-9">
 					<div class="row">
 						<ul class="info">
-							<li><span><a style="color: gray" href="mailto:info@ditcsrl.com"><i class="icon-info-blocks material-icons">question_answer</i> info@ditcsrl.com</a></span></li>
-							<li><span><a style="color: gray" href="tel:+393713729649"><i class="icon-info-blocks material-icons">perm_phone_msg</i>+393713729649</a></span></li>
+							<li><span><a style="color: gray" href="mailto:info@ditcsrl.com"><i class="icon-info-blocks material-icons">question_answer</i> <?php echo $About4['email'] ?> </a></span></li>
+							<li><span><a style="color: gray" href="tel:+393713729649"><i class="icon-info-blocks material-icons">perm_phone_msg</i><?php echo $About4['tel'] ?></a></span></li>
 						</ul>
 						<div class="clr"></div>
 					</div>
@@ -118,21 +142,14 @@
 				<div class="col-md-12">
 					<div class="section-title text-center">
 						<h2 style="color:#ce292c;">À propos de nous  </h2>
-						<p>Dalice International Trading Company SRL est une société basée en Italie,<br> créée pour associer les besoins et les préférences des clients aux meilleurs produits du monde.</p>
-					</div>
+                    <p><?php echo $About['intro'] ?></p>
+                    </div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
 					<div class="about-text">
-						<p>	Nous créons pour nos clients un environnement international où des produits de haute qualité, l'intégrité et la transparence sont garantis pour une expérience unique.
-							Nous servons de pont entre les clients et le marché international.
-							<br>
-							D.I.T.C SRL représente une ligne de réseau fiable. Nous sommes principalement spécialisés dans les équipements et produits agricoles dans le monde entier, avec une attention particulière pour le bassin méditerranéen.
-							<br>
-							Le D.I.T.C est né grâce aux efforts combinés et à l'expérience de plusieurs partenaires dans les domaines du commerce et de l'agriculture.
-							<br>
-							Nos partenaires sont présents dans le monde entier, en Europe, en Afrique du Nord, au Moyen-Orient, en Chine, en Turquie...etc
+						<p>	<?php echo $About['p'] ?>
 
 						</p>
 						<h4 style="color:#ce292c; margin-top:15px;"> <b>Nos valeurs fondamentales:</b> </h4>
@@ -148,13 +165,12 @@
 				</div>
 				<div class="col-md-6 col-sm-6">
 					<div class="about-image">
-						<img src="../img/about.jpg" alt="About Images">
+						<img src="../img/<?php echo $About['img'] ?>" alt="About Images">
 					</div>
 				</div>
 			</div>
 			<div class="section-title text-center">
-				<p>Nous unissons nos efforts, guidés par nos valeurs, pour garantir une expérience meilleure et unique à nos clients, nos consommateurs et nos partenaires.<br>
-					Nous mêlons nos efforts à notre créativité pour maintenir et atteindre nos buts et objectifs organisationnels</p>
+				<p><?php echo $About['conc'] ?></p>
 			</div>
 
 		</div>
@@ -167,7 +183,7 @@
         	<div class="col-md-4   md-margin-bottom-40">
 						<div class="card small">
         			<div class="card-image">
-        				<img class="img-responsive" src="../img/service1.jpg" alt="">
+        				<img class="img-responsive" src="../img/<?php echo $About2['img_mis'] ?>" alt="">
         				<span class="card-title">Notre mission</span>
               </div>
               <div class="card-content carta">
@@ -184,12 +200,12 @@
 			   	<div class="col-md-4 md-margin-bottom-40">
 						<div class="card small">
               <div class="card-image">
-                <img class="img-responsive" src="../img/service2.jpg" alt="">
+                <img class="img-responsive" src="../img/<?php echo $About2['img_vis'] ?>" alt="">
                 <span class="card-title">Notre vision</span>
               </div>
               <div class="card-content carta">
 								<ul style="margin-left:15px;">
-									<li style="list-style-type: circle;">Construire et établir un lien durable entre nous, nos partenaires et les entreprises du monde entier, en garantissant un environnement de travail durable, coopératif et professionnel. </li>
+									<li style="list-style-type: circle;"><?php echo $About2['vis'] ?> </li>
 								</ul>
               </div>
             </div>
@@ -212,35 +228,35 @@
         	<div class="col-sm-4 info-blocks">
             <div class="info-blocks-in" >
 							<i class="icon-info-blocks material-icons">agriculture</i>
-              <h3>Secteur AGRICOLE</h3>
+              <h3><?php echo $About3['titre'] ?> </h3>
 							<div class="line"></div>
               <ul>
-              	<li>Equipements</li>
-              	<li>Pesticides et fertilisants</li>
-              	<li>Les graines </li>
-              	<li>Les légumes</li>
-              	<li>Les fruits </li>
+              	<li><?php echo $About3['val'] ?></li>
+              	<li></li>
+              	<li> </li>
+              	<li></li>
+              	<li> </li>
               </ul>
             </div>
           </div>
           <div class="col-sm-4 info-blocks">
             <div class="info-blocks-in">
 					 		<i class="icon-info-blocks material-icons">trending_up</i>
-	            <h3>Autres secteurs </h3>
+	            <h3><?php echo $About3['titre2'] ?> </h3>
 							<div class="line"></div>
-	<p>Nous effectuons une analyse approfondie et détaillée du marché afin de répondre aux besoins de nos clients avec les meilleurs produits sur le marché international, quelle que soit la typologie du produit. </p>
+	<p><?php echo $About3['val2'] ?> </p>
             </div>
           </div>
           <div class="col-sm-4 info-blocks">
             <div class="info-blocks-in">
               <i class="icon-info-blocks material-icons">card_travel</i>
-              <h3>Autres services </h3>
+              <h3><?php echo $About3['titre3'] ?> </h3>
 							<div class="line"></div>
               <ul>
-              	<li>Organisation de foires commerciales
+              	<li><?php echo $About3['val3'] ?>
 					<ul>
-										<li><span class="fa fa-angle-right"></span> Tunisie</li>
-										<li><span class="fa fa-angle-right"></span> Italie</li>
+										<li><span class="fa fa-angle-right"></span> </li>
+										<li><span class="fa fa-angle-right"></span> </li>
 									</ul>
 								</li>
               		</ul>
@@ -268,12 +284,10 @@
 						<h5 class="widgetheading">Nos coordonnées</h5>
 						<address>
 							<strong>Dalice ITC</strong><br>
-							VIA DEL GUERCINO 2<br>
-							CASALECCHIO DI RENO<br>
-							BOLOGNA 40033 ITALY.</address>
+                            <?php echo $About4['adresse'] ?></address>
 						<p>
-							<i class="icon-phone"></i> <a href="tel:+393713729649">+393713729649</a>  <br>
-							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com">info@ditcsrl.com</a>
+							<i class="icon-phone"></i> <a href="tel:+393713729649"><?php echo $About4['tel'] ?></a>  <br>
+							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com"><?php echo $About4['email'] ?></a>
 						</p>
 					</div>
 				</div>
@@ -287,10 +301,10 @@
 					</div>
 					<div class="">
 						<ul class="social-network">
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.instagram.com/ditcsrl/" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['fb'] ?>" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['insta'] ?>" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['twitter'] ?>" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['linkedin'] ?>" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
 						</ul>
 					</div>
 				</div>

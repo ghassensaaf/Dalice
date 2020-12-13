@@ -1,3 +1,15 @@
+<?php
+include "../admin/inc/fonctions.php";
+$f=new fonctions();
+$home4=$f->get_Cor_item();
+foreach ($home4 as $About4)
+{
+
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,8 +52,8 @@
 				<div class="col-sm-9">
 					<div class="row">
 						<ul class="info">
-							<li><span><a style="color: gray" href="mailto:info@ditcsrl.com"><i class="icon-info-blocks material-icons">question_answer</i> info@ditcsrl.com</a></span></li>
-							<li><span><a style="color: gray" href="tel:+393713729649"><i class="icon-info-blocks material-icons">perm_phone_msg</i>+393713729649</a></span></li>
+							<li><span><a style="color: gray" href="mailto:info@ditcsrl.com"><i class="icon-info-blocks material-icons">question_answer</i> <?php echo $About4['email'] ?></a></span></li>
+							<li><span><a style="color: gray" href="tel:+393713729649"><i class="icon-info-blocks material-icons">perm_phone_msg</i><?php echo $About4['tel'] ?></a></span></li>
 						</ul>
 						<div class="clr"></div>
 					</div>
@@ -101,15 +113,15 @@
 						<div style="margin-top: 50px" class="container ">
 							<div class="row">
 								<div class="col-md-2 pull-right"><p style="color: #ce292c"> <b> الهاتف </b><i class="fa fa-phone"></i></p></div>
-								<div class="col-md-2 pull-right"><p>+39 3713729649</p></div>
+								<div class="col-md-2 pull-right"><p><?php echo $About4['tel'] ?></p></div>
 							</div>
 							<div class="row">
 								<div class="col-md-2 pull-right"><p style="color: #ce292c"> <b> الواتساب </b><i class="fa fa-whatsapp"></i></p></div>
-								<div class="col-md-2 pull-right"><p>+39 3713729649</p></div>
+								<div class="col-md-2 pull-right"><p><?php echo $About4['tel'] ?></p></div>
 							</div>
 							<div class="row">
 								<div class="col-md-2 pull-right"><p style="color: #ce292c"> <b> البريد الإلكتروني </b><i class="fa fa-mail-reply-all"></i></p></div>
-								<div class="col-md-2 pull-right"><p>info@ditcsrl.com</p></div>
+								<div class="col-md-2 pull-right"><p><?php echo $About4['email'] ?></p></div>
 							</div>
 						</div>
 						<h3>أو أرسل لنا<span class="color">  رسالة</span></h3>
@@ -172,12 +184,10 @@
 						<h5 class="widgetheading">تفاصيل الاتصال الخاصة بنا</h5>
 						<address>
 							<strong>Dalice ITC</strong><br>
-							VIA DEL GUERCINO 2<br>
-							CASALECCHIO DI RENO<br>
-							BOLOGNA 40033 ITALY.</address>
+                            <?php echo $About4['adresse'] ?></address>
 						<p>
-							<i class="icon-phone"></i> <a href="tel:+393713729649">+393713729649</a>  <br>
-							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com">info@ditcsrl.com</a>
+							<i class="icon-phone"></i> <a href="tel:+393713729649"><?php echo $About4['tel'] ?></a>  <br>
+							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com"><?php echo $About4['email'] ?></a>
 						</p>
 					</div>
 				</div>
@@ -191,10 +201,10 @@
 					</div>
 					<div class="">
 						<ul class="social-network">
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.instagram.com/ditcsrl/" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a class="waves-effect waves-dark" target="_blank" href="https://www.facebook.com/Dalice-International-Trading-Company-SRL-101024878510903/" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['fb'] ?>" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['insta'] ?>" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['twitter'] ?>" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="waves-effect waves-dark" target="_blank" href="<?php echo $About4['linkedin'] ?>" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
 						</ul>
 					</div>
 				</div>
