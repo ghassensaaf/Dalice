@@ -168,7 +168,7 @@ $carsItems=$f->get_Cor_item();
                             foreach ($carsItems  as $item)
                             {
                                 echo'
-                            <div class="col-6">
+                            <div class="col-12">
                             
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">

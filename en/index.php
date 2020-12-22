@@ -150,13 +150,16 @@ foreach ($home4 as $About4)
                             ?>
 </p>
 						<h4 style="color:#ce292c; margin-top:15px;"> <b>Our Core Values</b> </h4>
-						<ul class="withArrow">
-							<li><span class="fa fa-angle-right"></span> Integrity & Transparency </li>
-							<li><span class="fa fa-angle-right"></span> Continuous Growth</li>
-							<li><span class="fa fa-angle-right"></span> Innovation</li>
-							<li><span class="fa fa-angle-right"></span> Professionalism</li>
-							<li><span class="fa fa-angle-right"></span> Responsibility & Reliability</li>
-						</ul>
+                        <ul class="withArrow">
+                        <?php
+                            $values=explode("--",$About['vals']);
+//                            var_dump($values);
+                            for ($i=0;$i<sizeof($values);$i++)
+                            {
+                            echo'<li><span class="fa fa-angle-right"></span> '.$values[$i].'</li>';
+                            }
+                        ?>
+                        </ul>
 
 					</div>
 				</div>

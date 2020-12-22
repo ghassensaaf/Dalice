@@ -119,6 +119,11 @@ else if($_POST["form"]=='editCor')
     $f->edit_Cor_item($_POST["lang"],$_POST["tel"],$_POST["email"],$_POST["adresse"],$_POST["insta"],$_POST["twitter"],$_POST["linkedin"],$_POST["fb"]);
    header("location:../contactdet.php");
 }
+else if($_POST["form"]=='restAbout')
+{
+    $f->rest_About_item($_POST["lang"]);
+   header("location:../home.php");
+}
 
 
 

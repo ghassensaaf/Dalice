@@ -65,11 +65,11 @@ class fonctions
 
     }
 
-    function get_about_item($lang=null)
+    function get_about_item($lang=null,$aff=1)
     {
-        $sql="select * from dalice.aboutus " ;
+        $sql="select * from dalice.aboutus where affi='$aff' order by lang" ;
         if ($lang!=null){
-            $sql="select * from dalice.aboutus WHERE lang='$lang'" ;
+            $sql="select * from dalice.aboutus WHERE lang='$lang' and affi='$aff' order by lang" ;
         }
 
         $db=config::getConnexion();
@@ -122,17 +122,23 @@ class fonctions
     }
     function edit_About_item($lang,$intro=null,$p=null,$vals=null,$conc=null,$img=null)
     {
-        $sql="update dalice.aboutus set intro= :intro, p= :p,vals= :vals,conc= :conc,img= :img where lang='$lang'";
-
+        $sql="update dalice.aboutus set intro= :intro, p= :p,vals= :vals,conc= :conc,img= :img where lang='$lang' and affi=1";
+        $sql1="update dalice.aboutus t, (select distinct conc, intro, p, vals, img,lang,affi
+               FROM dalice.aboutus
+               where lang='$lang' and affi=1) t1
+               set t.conc = t1.conc,t.intro=t1.intro,t.p=t1.p,t.vals=t1.vals,t.img=t1.img
+               where t.lang = '$lang'
+               and t.affi=0";
         if($img=="")
         {
-            $sql="update dalice.aboutus set intro= :intro, p= :p,vals= :vals,conc= :conc  where lang='$lang'";
+            $sql="update dalice.aboutus set intro= :intro, p= :p,vals= :vals,conc= :conc  where lang='$lang' and affi=1";
         }
 
-        echo $sql;
+        echo $sql1;
         $db=config::getConnexion();
         try
         {
+            $db->query($sql1);
             $req=$db->prepare($sql);
             $req->bindValue(':intro',$intro);
             $req->bindValue(':p',$p);
@@ -143,6 +149,7 @@ class fonctions
                  $req->bindValue(':img',$img);
              }
             $req->execute();
+
         }
         catch (Exception $e)
         {
@@ -310,6 +317,26 @@ class fonctions
         {
             echo "error :".$e->getMessage();
         }
+    }
+    function rest_About_item($lang)
+    {
+        $sql="update dalice.aboutus
+                set affi =
+                    case 
+                        when affi= 1 then 0
+                        else 1 
+                    end 
+                where lang = '$lang'";
+        echo $sql;
+        $db=config::getConnexion();
+        try {
+            $db->query($sql);
+        }
+        catch (Exception $e)
+        {
+            echo "error :".$e->getMessage();
+        }
+
     }
 
 }

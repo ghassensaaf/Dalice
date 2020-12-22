@@ -213,13 +213,14 @@ $carsItems=$f->get_car_item();
                         </div>
                     </div>
                     <!-- Content Row -->
-                    <div class="row">
+
                         <?php
                         $x=1;
                         foreach ($carsItems as $item)
                         {
                             echo'
-                            <div class="col-6">
+                            <div class="row">
+                            <div class="col-12">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -325,13 +326,13 @@ $carsItems=$f->get_car_item();
                                 </div>
                             </div>
                         </div>
-                        
+                        </div>
                             ';
                             $x++;
                         }
                         ?>
 
-                    </div>
+
 
 
                 </div>

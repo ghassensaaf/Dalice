@@ -2,9 +2,16 @@
 include "../admin/inc/fonctions.php";
 $f=new fonctions();
 $carsItems=$f->get_about_item();
+$oldAboutItems=$f->get_about_item(null,0);
 $carsItems1=$f->get_Mis_Vis_item();
 $carsItems2=$f->get_act_item();
-?>
+$olds= array();
+foreach ($oldAboutItems as $ii)
+{
+    array_push($olds,$ii);
+}
+//var_dump($olds);
+?>  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -262,35 +269,67 @@ $carsItems2=$f->get_act_item();
                         </div>
                     </div>
                                         <div class="col-3">
-                                            <a href="" data-toggle="modal" data-target="#del'.$x.'"> <i class="fa fa-trash"></i> supprimer</a>
+                                            <a href="" data-toggle="modal" data-target="#del'.$x.'"> <i class="fa fa-undo"></i> restaurer</a>
                                         </div>
-                                        <div class="modal fade" id="del'.$x.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-                                      <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                          <div class="modal-header text-center">
-                                            <h4 class="modal-title w-100 font-weight-bold">Supprimer Image</h4>
-                                          </div>
-                                          <form action="inc/forms.php" method="post">
-                                            <div class="modal-body mx-3">
-                                            <div class="md-form mb-5">
-                                              <input type="text" id="orangeForm-name" name="" class="form-control validate text-center" value="" disabled>
-                                            </div>
-                                            <div class="md-form mb-5">
-                                              <p class="text-center text-danger">Voulez-vous vraiment supprimer cette image?</p>
-                                            </div>
-                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
-                                            <input type="hidden" name="form" value="delCar">
-
-                                          </div>
-                                          <div class="modal-footer d-flex justify-content-center">
-                                            <input type="button" class="btn btn-outline-success" data-dismiss="modal" aria-label="Close" value="Annuler">
-                                            <input type="submit" class="btn btn-outline-danger" value="Confirmer">
-
-                                          </div>
-                                          </form>
-                                        </div>
-                                      </div>
+                                        <div class="modal fade" id="del'.$x.'" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-weight-bold">restaurer </h4>
                                     </div>
+                                    <form id="addC" action="inc/forms.php" enctype="multipart/form-data" onsubmit="return submit_form(this)" method="post">
+                                        <div class="modal-body mx-3">
+                                            <div class="container-fluid">
+                                                <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">introduction</label></div>
+                                                            <textarea dis id="nom_ass" name="intro" type="text"  class="form-control"  placeholder="" disabled>'.$olds[$x-1]["intro"].' </textarea>
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">paragraphe</label></div>
+                                                            <textarea id="pre_ass" name="p" type="text" class="form-control" value="" placeholder=""disabled>'.$olds[$x-1]["p"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="ord" class="control-label mb-1">Valeurs</label></div>
+                                                            <textarea id="pre_ass" name="vals" type="number" class="form-control" value="" placeholder=""disabled>'.$olds[$x-1]["vals"].'</textarea>
+                                                        </div>
+                                                 </div>
+                                               
+                                                 <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">conclusion</label></div>
+                                                            <textarea id="pre_ass" name="conc" type="text" class="form-control" value="" placeholder=""disabled>'.$olds[$x-1]["conc"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                <div class="row mb-1">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <center><img width="50%" src="../img/'.$olds[$x-1]["img"].'" alt=""></center>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <input type="submit" class="btn btn-outline-success" value="restaurer">
+                                            <input type="hidden" name="form" value="restAbout">
+                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
+                                            <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                                     </div>
                                     
                                 </div>
