@@ -143,7 +143,14 @@ foreach ($home4 as $About4){
 				<div class="col-md-12">
 					<div class="section-title text-center">
 						<h2 style="color:#ce292c;">Chi siamo</h2>
-<p><?php echo $About['intro'] ?></p>					</div>
+                        <?php
+                        $values=explode("--",$About['intro']);
+                        //                            var_dump($values);
+                        for ($i=0;$i<sizeof($values);$i++)
+                        {
+                            echo'<p> '.$values[$i].'</p>';
+                        }
+                        ?>					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -155,11 +162,14 @@ foreach ($home4 as $About4){
 						</p>
 						<h4 style="color:#ce292c; margin-top:15px;"> <b>I nostri valori fondamentali:</b> </h4>
 						<ul class="withArrow">
-							<li><span class="fa fa-angle-right"></span> Integrità e trasparenza </li>
-							<li><span class="fa fa-angle-right"></span> Crescita continua      </li>
-							<li><span class="fa fa-angle-right"></span> Innovazione      </li>
-							<li><span class="fa fa-angle-right"></span> Professionalità      </li>
-							<li><span class="fa fa-angle-right"></span> Responsabilità e affidabilità      </li>
+                            <?php
+                            $values=explode("--",$About['vals']);
+                            //                            var_dump($values);
+                            for ($i=0;$i<sizeof($values);$i++)
+                            {
+                                echo'<li><span class="fa fa-angle-right"></span> '.$values[$i].'</li>';
+                            }
+                            ?>
 						</ul>
 
 					</div>
@@ -189,11 +199,14 @@ foreach ($home4 as $About4){
               </div>
               <div class="card-content carta">
                 <ul style="margin-left:15px;">
-                	<li style="list-style-type: circle;">Fornire e offrire ai nostri clienti i migliori prodotti sul mercato che porteranno al loro successo.      </li>
-                	<li style="list-style-type: circle;">Creiamo una connessione commerciale tra le nazioni.      </li>
-                	<li style="list-style-type: circle;">Mettere i nostri clienti in contatto con i migliori partner.      </li>
-                	<li style="list-style-type: circle;">Stiamo forgiando una nuova anima di sviluppo aziendale su misura per le preferenze dei clienti e gli obiettivi aziendali.      </li>
-                </ul>
+                    <?php
+                    $values=explode("--",$About2['mis']);
+                    //                            var_dump($values);
+                    for ($i=0;$i<sizeof($values);$i++)
+                    {
+                        echo'<li style="list-style-type: circle;"> '.$values[$i].'</li>';
+                    }
+                    ?>ul>
               </div>
             </div>
           </div>
@@ -206,7 +219,14 @@ foreach ($home4 as $About4){
               </div>
               <div class="card-content carta">
 								<ul style="margin-left:15px;">
-									<li style="list-style-type: circle;"> <?php echo $About2['vis'] ?>      </li>
+                                    <?php
+                                    $values=explode("--",$About2['vis']);
+                                    //                            var_dump($values);
+                                    for ($i=0;$i<sizeof($values);$i++)
+                                    {
+                                        echo'<li style="list-style-type: circle;"> '.$values[$i].'</li>';
+                                    }
+                                    ?>
 								</ul>
               </div>
             </div>
@@ -233,11 +253,14 @@ foreach ($home4 as $About4){
               <h3><?php echo $About3['titre'] ?> </h3>
 							<div class="line"></div>
               <ul>
-              	<li><?php echo $About3['val'] ?></li>
-              	<li></li>
-              	<li></li>
-              	<li></li>
-              	<li></li>
+                  <?php
+                  $values=explode("--",$About3['val']);
+                  //                            var_dump($values);
+                  for ($i=0;$i<sizeof($values);$i++)
+                  {
+                      echo'<li> '.$values[$i].'</li>';
+                  }
+                  ?>
               </ul>
             </div>
           </div>
@@ -255,10 +278,14 @@ foreach ($home4 as $About4){
               <h3><?php echo $About3['titre3'] ?></h3>
 							<div class="line"></div>
               <ul>
-              	<li><?php echo $About3['val3'] ?>
-					<ul>
-						<li><span class="fa fa-angle-right"></span> </li>
-						<li><span class="fa fa-angle-right"></span> </li>
+                  <?php
+                  $values=explode("--",$About3['val3']);
+                  //                            var_dump($values);
+                  for ($i=0;$i<sizeof($values);$i++)
+                  {
+                      echo'<li><span class="fa fa-angle-right"></span> '.$values[$i].'</li>';
+                  }
+                  ?>
 					</ul>
 				</li>
               </ul>
@@ -286,7 +313,14 @@ foreach ($home4 as $About4){
 						<h5 class="widgetheading">le nostre coordinate</h5>
 						<address>
 							<strong>Dalice ITC</strong><br>
-                            <?php echo $About4['adresse'] ?></address>
+                            <?php
+                            $values=explode("--",$About4['adresse']);
+                            //                            var_dump($values);
+                            for ($i=0;$i<sizeof($values);$i++)
+                            {
+                                echo'<p>'.$values[$i].'</p>';
+                            }
+                            ?></address>
 						<p>
 							<i class="icon-phone"></i> <a href="tel:+393713729649"><?php echo $About4['tel'] ?></a>  <br>
 							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com"><?php echo $About4['email'] ?></a>

@@ -65,24 +65,7 @@ class fonctions
 
     }
 
-    function get_about_item($lang=null,$aff=1)
-    {
-        $sql="select * from dalice.aboutus where affi='$aff' order by lang" ;
-        if ($lang!=null){
-            $sql="select * from dalice.aboutus WHERE lang='$lang' and affi='$aff' order by lang" ;
-        }
 
-        $db=config::getConnexion();
-        try
-        {
-            return $db->query($sql);
-        }
-        catch (Exception $e)
-        {
-            echo "error :".$e->getMessage();
-        }
-
-    }
 
     function del_car_item($id )
     {
@@ -120,6 +103,77 @@ class fonctions
             echo "error :".$e->getMessage();
         }
     }
+    function get_about_item($lang=null,$aff=1)
+    {
+        $sql="select * from dalice.aboutus where affi='$aff' order by lang" ;
+        if ($lang!=null){
+            $sql="select * from dalice.aboutus WHERE lang='$lang' and affi='$aff' order by lang" ;
+        }
+
+        $db=config::getConnexion();
+        try
+        {
+            return $db->query($sql);
+        }
+        catch (Exception $e)
+        {
+            echo "error :".$e->getMessage();
+        }
+
+    }
+
+    function get_Mis_Vis_item($lang=null,$aff=1)
+    {
+        $sql="select * from dalice.mis_vis where aff='$aff' order by lang" ;
+        if ($lang!=null){
+            $sql="select * from dalice.mis_vis WHERE lang='$lang' and aff='$aff' order by lang" ;
+        }
+
+        $db=config::getConnexion();
+        try
+        {
+            return $db->query($sql);
+        }
+        catch (Exception $e)
+        {
+            echo "error :".$e->getMessage();
+        }
+
+    }
+    function get_Cor_item($aff=1)
+    {
+        $sql="select * from dalice.cordonnee where affi='$aff' order by id" ;
+
+        $db=config::getConnexion();
+        try
+        {
+            return $db->query($sql);
+        }
+        catch (Exception $e)
+        {
+            echo "error :".$e->getMessage();
+        }
+
+    }
+    function get_act_item($lang=null,$aff=1)
+    {
+        $sql="select * from dalice.act1 where affi='$aff' order by lang " ;
+        if ($lang!=null){
+            $sql="select * from dalice.act1 WHERE lang='$lang' and affi='$aff' order by lang" ;
+        }
+
+        $db=config::getConnexion();
+        try
+        {
+            return $db->query($sql);
+        }
+        catch (Exception $e)
+        {
+            echo "error :".$e->getMessage();
+        }
+
+    }
+
     function edit_About_item($lang,$intro=null,$p=null,$vals=null,$conc=null,$img=null)
     {
         $sql="update dalice.aboutus set intro= :intro, p= :p,vals= :vals,conc= :conc,img= :img where lang='$lang' and affi=1";
@@ -144,10 +198,10 @@ class fonctions
             $req->bindValue(':p',$p);
             $req->bindValue(':vals',$vals);
             $req->bindValue(':conc',$conc);
-             if ($img!="")
-             {
-                 $req->bindValue(':img',$img);
-             }
+            if ($img!="")
+            {
+                $req->bindValue(':img',$img);
+            }
             $req->execute();
 
         }
@@ -156,48 +210,35 @@ class fonctions
             echo "error :".$e->getMessage();
         }
     }
-    function get_Mis_Vis_item($lang=null)
-    {
-        $sql="select * from dalice.mis_vis " ;
-        if ($lang!=null){
-            $sql="select * from dalice.mis_vis WHERE lang='$lang'" ;
-        }
-
-        $db=config::getConnexion();
-        try
-        {
-            return $db->query($sql);
-        }
-        catch (Exception $e)
-        {
-            echo "error :".$e->getMessage();
-        }
-
-    }
-
 
     function edit_MisVis_item($lang,$mis=null,$vis=null,$img_mis=null,$img_vis=null)
     {
-        $sql="update dalice.mis_vis set mis= :mis, vis= :vis ,img_mis=:img_mis,img_vis=:img_vis where lang='$lang'";
-        echo "1".$img_mis;
-        echo"2".$img_vis;
+        $sql="update dalice.mis_vis set mis= :mis, vis= :vis,img_mis= :img_mis,img_vis= :img_vis where lang='$lang' and aff=1";
+        $sql1="update dalice.mis_vis t, (select distinct mis, vis, img_mis, img_vis,lang,aff
+               FROM dalice.mis_vis
+               where lang='$lang' and aff=1) t1
+               set t.mis = t1.mis,t.vis=t1.vis,t.img_mis=t1.img_mis,t.img_vis=t1.img_vis
+               where t.lang = '$lang'
+               and t.aff=0";
+
         if(($img_mis=="") and ($img_vis!=""))
         {
-            $sql="update dalice.mis_vis set mis= :mis, vis= :vis ,img_vis= :img_vis where lang='$lang'";
+            $sql="update dalice.mis_vis set mis= :mis, vis= :vis ,img_vis= :img_vis where lang='$lang' and aff=1";
         }
         else if (($img_vis=="") and ($img_mis!="") )
         {
-            $sql="update dalice.mis_vis set mis= :mis, vis= :vis ,img_mis= :img_mis where lang='$lang'";
+            $sql="update dalice.mis_vis set mis= :mis, vis= :vis ,img_mis= :img_mis where lang='$lang' and aff=1";
         }
         else if (($img_mis=='') and ($img_vis==''))
         {
-            $sql="update dalice.mis_vis set mis= :mis, vis= :vis  where lang='$lang'";
+            $sql="update dalice.mis_vis set mis= :mis, vis= :vis  where lang='$lang' and aff=1";
         }
 
         echo $sql;
         $db=config::getConnexion();
         try
         {
+            $db->query($sql1);
             $req=$db->prepare($sql);
             $req->bindValue(':mis',$mis);
             $req->bindValue(':vis',$vis);
@@ -229,34 +270,24 @@ class fonctions
         }
     }
 
-    function get_act_item($lang=null)
-    {
-        $sql="select * from dalice.act1 " ;
-        if ($lang!=null){
-            $sql="select * from dalice.act1 WHERE lang='$lang'" ;
-        }
 
-        $db=config::getConnexion();
-        try
-        {
-            return $db->query($sql);
-        }
-        catch (Exception $e)
-        {
-            echo "error :".$e->getMessage();
-        }
-
-    }
 
 
     function edit_act_item($lang,$titre=null,$val=null,$titre2=null,$val2=null,$titre3=null,$val3=null)
     {
-        $sql="update dalice.act1 set titre= :titre, val= :val,titre2= :titre2,val2= :val2,titre3= :titre3 ,val3 = :val3 where lang='$lang'";
 
-        echo $sql;
+
+        $sql="update dalice.act1 set titre= :titre, val= :val,titre2= :titre2,val2= :val2,titre3= :titre3,val3= :val3 where lang='$lang' and affi=1";
+        $sql1="update dalice.act1 t, (select distinct titre, val, titre2, val2,titre3,val3,lang,affi
+               FROM dalice.act1
+               where lang='$lang' and affi=1) t1
+               set t.titre = t1.titre,t.val=t1.val,t.titre2=t1.titre2,t.val2=t1.val2,t.titre3=t1.titre3,t.val3=t1.val3
+               where t.lang = '$lang'
+               and t.affi=0";
+
         $db=config::getConnexion();
         try
-        {
+        { $db->query($sql1);
             $req=$db->prepare($sql);
             $req->bindValue(':titre',$titre);
             $req->bindValue(':val',$val);
@@ -275,31 +306,24 @@ class fonctions
     }
 
 
-    function get_Cor_item()
-    {
-        $sql="select * from dalice.cordonnee " ;
 
-        $db=config::getConnexion();
-        try
-        {
-            return $db->query($sql);
-        }
-        catch (Exception $e)
-        {
-            echo "error :".$e->getMessage();
-        }
-
-    }
 
 
     function edit_Cor_item($id,$tel=null,$email=null,$adresse=null,$insta=null,$twitter=null,$linkedin=null,$fb=null)
     {
-        $sql="update dalice.cordonnee set tel= :tel, email= :email,adresse= :adresse,insta= :insta ,twitter= :twitter ,linkedin = :linkedin ,fb =:fb where id='$id'";
 
-        echo $sql;
+        $sql="update dalice.cordonnee set tel= :tel, email= :email,adresse= :adresse,insta= :insta,twitter= :twitter,linkedin= :linkedin,fb =:fb where id='$id' and affi=1";
+        $sql1="update dalice.cordonnee t, (select distinct tel, email, adresse, insta,twitter,linkedin,fb,id,affi
+               FROM dalice.cordonnee
+               where id='$id' and affi=1) t1
+               set t.tel = t1.tel,t.email=t1.email,t.adresse=t1.adresse,t.insta=t1.insta,t.twitter=t1.twitter,t.linkedin=t1.linkedin,t.fb=t1.fb
+               where t.id != '$id'
+               and t.affi=0";
+        echo $sql1;
         $db=config::getConnexion();
         try
         {
+            $db->query($sql1);
             $req=$db->prepare($sql);
             $req->bindValue(':tel',$tel);
             $req->bindValue(':email',$email);
@@ -331,6 +355,77 @@ class fonctions
         $db=config::getConnexion();
         try {
             $db->query($sql);
+        }
+        catch (Exception $e)
+        {
+            echo "error :".$e->getMessage();
+        }
+
+    }
+    function rest_MisVis_item($lang)
+    {
+        $sql="update dalice.mis_vis
+                set aff =
+                    case 
+                        when aff= 1 then 0
+                        else 1 
+                    end 
+                where lang = '$lang'";
+        echo $sql;
+        $db=config::getConnexion();
+        try {
+            $db->query($sql);
+        }
+        catch (Exception $e)
+        {
+            echo "error :".$e->getMessage();
+        }
+
+    }
+    function rest_act_item($lang)
+    {
+        $sql="update dalice.act1
+                set affi =
+                    case 
+                        when affi= 1 then 0
+                        else 1 
+                    end 
+                where lang = '$lang'";
+        echo $sql;
+        $db=config::getConnexion();
+        try {
+            $db->query($sql);
+        }
+        catch (Exception $e)
+        {
+            echo "error :".$e->getMessage();
+        }
+
+    }
+    function rest_Cord_item($id)
+    {
+        $sql="update dalice.cordonnee
+                set affi =
+                    case 
+                        when affi= 1 then 0                       
+                         else 1
+                    end 
+                where id =1";
+
+         $sql1="update dalice.cordonnee
+                set affi =
+                    case 
+                        when affi= 1 then 0                       
+                         else 1
+                    end 
+                where id =3";
+        echo $sql;
+
+        $db=config::getConnexion();
+        try {
+
+            $db->query($sql);
+            $db->query($sql1);
         }
         catch (Exception $e)
         {

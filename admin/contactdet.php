@@ -2,6 +2,12 @@
 include "../admin/inc/fonctions.php";
 $f=new fonctions();
 $carsItems=$f->get_Cor_item();
+$oldCordItems=$f->get_Cor_item(0);
+$olds= array();
+foreach ($oldCordItems as $ii)
+{
+    array_push($olds,$ii);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -174,33 +180,34 @@ $carsItems=$f->get_Cor_item();
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                       <h3>Numéro :</h3>
+                                            	<div class="col-md-5"><p><span class="iconify" data-icon="mdi-phone" data-inline="true"></span> <b> Numéro  </b></p></div>
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <h6>'.$item["tel"].'</h6>
+                                                <h8>'.$item["tel"].'</h8>
                                                 </div>
-                                                 <h3>E-mail :</h3>
+                                                <div class="col-md-5"><p><span class="iconify" data-icon="mdi-email" data-inline="true"></span> <b> E-mail  </b></p></div>
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <h6>'.$item["email"].'</h6>
+                                                <h8>'.$item["email"].'</h8>
                                                 </div>
-                                                 <h3>Adresse</h3>
+                                               <div class="col-md-5"><p><span class="iconify" data-icon="mdi-location" data-inline="true"></span> <b> Adresse  </b></p></div>
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <h6>'.$item["adresse"].'</h6>
+                                                <h8>'.$item["adresse"].'</h8>
                                                 </div>
-                                                 <h3>Lien Facebook :</h3>
+											<div class="col-md-5"><p><span class="iconify" data-icon="ion-logo-facebook" data-inline="true"></span> <b> Lien Facebook </b></p></div>
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <h6>'.$item["fb"].'</h6>
+                                         
+                                                <h8  >'.$item["fb"].'</h8>
                                                 </div>
-                                                 <h3>Lien instgram  :</h3>
+                                                 <div class="col-md-5"><p><span class="iconify" data-icon="ion-logo-instagram" data-inline="true"></span> <b> Lien Instagram  </b></p></div>
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <h6>'.$item["insta"].'</h6>
+                                                <h8>'.$item["insta"].'</h8>
                                                 </div>
-                                                 <h3>Lien Linkedin :</h3>
+                                               <div class="col-md-5"><p><span class="iconify" data-icon="ion-logo-linkedin" data-inline="true"></span> <b> Lien Instagram  </b></p></div>
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <h6>'.$item["linkedin"].'</h6>
+                                                <h8>'.$item["linkedin"].'</h8>
                                                 </div>
-                                                <h3>Lien Twitter :</h3>
+                                                <div class="col-md-5"><p><span class="iconify" data-icon="ion-logo-twitter" data-inline="true"></span> <b> Lien Instagram  </b></p></div>
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <h6>'.$item["twitter"].'</h6>
+                                                <h8>'.$item["twitter"].'</h8>
                                                 </div>
                                                 
                                             
@@ -292,36 +299,84 @@ $carsItems=$f->get_Cor_item();
                             </div>
                         </div>
                     </div>
-                                        <div class="col-3">
-                                            <a href="" data-toggle="modal" data-target="#del'.$x.'"> <i class="fa fa-trash"></i> supprimer</a>
+                                       <div class="col-3">
+                                            <a href="" data-toggle="modal" data-target="#del'.$x.'"> <i class="fa fa-undo"></i> restaurer</a>
                                         </div>
-                                        <div class="modal fade" id="del'.$x.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-                                      <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                          <div class="modal-header text-center">
-                                            <h4 class="modal-title w-100 font-weight-bold">Supprimer Image</h4>
-                                          </div>
-                                          <form action="inc/forms.php" method="post">
-                                            <div class="modal-body mx-3">
-                                            <div class="md-form mb-5">
-                                              <input type="text" id="orangeForm-name" name="" class="form-control validate text-center" value="" disabled>
-                                            </div>
-                                            <div class="md-form mb-5">
-                                              <p class="text-center text-danger">Voulez-vous vraiment supprimer cette image?</p>
-                                            </div>
-                                            <input type="hidden" name="lang" value="'.$item["id"].'">
-                                            <input type="hidden" name="form" value="delCar">
-
-                                          </div>
-                                          <div class="modal-footer d-flex justify-content-center">
-                                            <input type="button" class="btn btn-outline-success" data-dismiss="modal" aria-label="Close" value="Annuler">
-                                            <input type="submit" class="btn btn-outline-danger" value="Confirmer">
-
-                                          </div>
-                                          </form>
-                                        </div>
-                                      </div>
+                                        <div class="modal fade" id="del'.$x.'" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-weight-bold">restaurer </h4>
                                     </div>
+                                    <form id="addC" action="inc/forms.php" enctype="multipart/form-data" onsubmit="return submit_form(this)" method="post">
+                                        <div class="modal-body mx-3">
+                                            <div class="container-fluid">
+                                                <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Numéro</label></div>
+                                                            <textarea dis id="nom_ass" name="intro" type="text"  class="form-control"  placeholder="" disabled>'.$olds[$x-1]["tel"].' </textarea>
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">E-mail</label></div>
+                                                            <textarea id="pre_ass" name="p" type="text" class="form-control" value="" placeholder=""disabled>'.$olds[$x-1]["email"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="ord" class="control-label mb-1">Lien instgram</label></div>
+                                                            <textarea id="pre_ass" name="vals" type="number" class="form-control" value="" placeholder=""disabled>'.$olds[$x-1]["adresse"].'</textarea>
+                                                        </div>
+                                                 </div>
+                                               
+                                                 <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Lien instgram</label></div>
+                                                            <textarea id="pre_ass" name="conc" type="text" class="form-control" value="" placeholder=""disabled>'.$olds[$x-1]["insta"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                    <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="ord" class="control-label mb-1">Lien Twitter</label></div>
+                                                            <textarea id="pre_ass" name="vals" type="number" class="form-control" value="" placeholder=""disabled>'.$olds[$x-1]["twitter"].'</textarea>
+                                                        </div>
+                                                 </div>
+                                               
+                                                 <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Lien Linkedin</label></div>
+                                                            <textarea id="pre_ass" name="conc" type="text" class="form-control" value="" placeholder=""disabled>'.$olds[$x-1]["linkedin"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                  <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="ord" class="control-label mb-1">Lien facebook</label></div>
+                                                            <textarea id="pre_ass" name="vals" type="number" class="form-control" value="" placeholder=""disabled>'.$olds[$x-1]["fb"].'</textarea>
+                                                        </div>
+                                                 </div>
+                                                 </div>
+                                            </div>
+
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <input type="submit" class="btn btn-outline-success" value="restaurer">
+                                            <input type="hidden" name="form" value="restCord">
+                                            <input type="hidden" name="id" value="'.$item["id"].'">
+                                            <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                                     </div>
                                     
                                 </div>
@@ -398,6 +453,7 @@ $carsItems=$f->get_Cor_item();
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
 </body>
 

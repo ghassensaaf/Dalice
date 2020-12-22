@@ -3,12 +3,24 @@ include "../admin/inc/fonctions.php";
 $f=new fonctions();
 $carsItems=$f->get_about_item();
 $oldAboutItems=$f->get_about_item(null,0);
+$oldMisVisItems=$f->get_Mis_Vis_item(null,0);
+$oldValItems=$f->get_act_item(null,0);
 $carsItems1=$f->get_Mis_Vis_item();
 $carsItems2=$f->get_act_item();
 $olds= array();
+$olds2= array();
+$olds3= array();
 foreach ($oldAboutItems as $ii)
 {
     array_push($olds,$ii);
+}
+foreach ($oldMisVisItems as $iii)
+{
+    array_push($olds2,$iii);
+}
+foreach ($oldValItems as $iiii)
+{
+    array_push($olds3,$iiii);
 }
 //var_dump($olds);
 ?>  
@@ -451,36 +463,60 @@ foreach ($oldAboutItems as $ii)
                             </div>
                         </div>
                     </div>
-                                        <div class="col-3">
-                                            <a href="" data-toggle="modal" data-target="#del2'.$x1.'"> <i class="fa fa-trash"></i> supprimer</a>
+                                         <div class="col-3">
+                                            <a href="" data-toggle="modal" data-target="#del2'.$x1.'"> <i class="fa fa-undo"></i> restaurer</a>
                                         </div>
-                                        <div class="modal fade" id="del2'.$x1.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-                                      <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                          <div class="modal-header text-center">
-                                            <h4 class="modal-title w-100 font-weight-bold">Supprimer Image</h4>
-                                          </div>
-                                          <form action="inc/forms.php" method="post">
-                                            <div class="modal-body mx-3">
-                                            <div class="md-form mb-5">
-                                              <input type="text" id="orangeForm-name" name="" class="form-control validate text-center" value="" disabled>
-                                            </div>
-                                            <div class="md-form mb-5">
-                                              <p class="text-center text-danger">Voulez-vous vraiment supprimer cette image?</p>
-                                            </div>
-                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
-                                            <input type="hidden" name="form" value="delCar">
-
-                                          </div>
-                                          <div class="modal-footer d-flex justify-content-center">
-                                            <input type="button" class="btn btn-outline-success" data-dismiss="modal" aria-label="Close" value="Annuler">
-                                            <input type="submit" class="btn btn-outline-danger" value="Confirmer">
-
-                                          </div>
-                                          </form>
-                                        </div>
-                                      </div>
+                                        <div class="modal fade" id="del2'.$x1.'" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-weight-bold">restaurer</h4>
                                     </div>
+                                    <form id="addC" action="inc/forms.php" enctype="multipart/form-data" onsubmit="return submit_form(this)" method="post">
+                                        <div class="modal-body mx-3">
+                                            <div class="container-fluid">
+                                                <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Mission</label></div>
+                                                            <textarea dis id="nom_ass" name="intro" type="text"  class="form-control"  placeholder="" disabled>'.$olds2[$x1-1]["mis"].' </textarea>
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Vison</label></div>
+                                                            <textarea id="pre_ass" name="p" type="text" class="form-control" value="" placeholder=""disabled>'.$olds2[$x1-1]["vis"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                                <div class="row mb-1">
+                                                  <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <center><img width="50%" src="../img/'.$olds2[$x1-1]["img_mis"].'" alt=""></center>
+                                                        </div>
+                                                    </div>
+                                                        <div class="col-5">
+                                                        <div class="form-group">
+                                                            <center><img width="50%" src="../img/'.$olds2[$x1-1]["img_vis"].'" alt=""></center>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <input type="submit" class="btn btn-outline-success" value="restaurer">
+                                            <input type="hidden" name="form" value="restMisVis">
+                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
+                                            <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                                     </div>
                                     
                                 </div>
@@ -618,35 +654,81 @@ foreach ($oldAboutItems as $ii)
                         </div>
                     </div>
                                         <div class="col-3">
-                                            <a href="" data-toggle="modal" data-target="#del3'.$x.'"> <i class="fa fa-trash"></i> supprimer</a>
+                                            <a href="" data-toggle="modal" data-target="#del3'.$x.'"> <i class="fa fa-undo"></i> restaurer</a>
                                         </div>
-                                        <div class="modal fade" id="del3'.$x.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-                                      <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                          <div class="modal-header text-center">
-                                            <h4 class="modal-title w-100 font-weight-bold">Supprimer Image</h4>
-                                          </div>
-                                          <form action="inc/forms.php" method="post">
-                                            <div class="modal-body mx-3">
-                                            <div class="md-form mb-5">
-                                              <input type="text" id="orangeForm-name" name="" class="form-control validate text-center" value="" disabled>
-                                            </div>
-                                            <div class="md-form mb-5">
-                                              <p class="text-center text-danger">Voulez-vous vraiment supprimer cette image?</p>
-                                            </div>
-                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
-                                            <input type="hidden" name="form" value="delCar">
-
-                                          </div>
-                                          <div class="modal-footer d-flex justify-content-center">
-                                            <input type="button" class="btn btn-outline-success" data-dismiss="modal" aria-label="Close" value="Annuler">
-                                            <input type="submit" class="btn btn-outline-danger" value="Confirmer">
-
-                                          </div>
-                                          </form>
-                                        </div>
-                                      </div>
+                                        <div class="modal fade" id="del3'.$x.'" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-weight-bold">restaurer</h4>
                                     </div>
+                                    <form id="addC" action="inc/forms.php" enctype="multipart/form-data" onsubmit="return submit_form(this)" method="post">
+                                        <div class="modal-body mx-3">
+                                            <div class="container-fluid">
+                                                <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre1</label></div>
+                                                            <textarea dis id="nom_ass" name="intro" type="text"  class="form-control"  placeholder="" disabled>'.$olds3[$x-1]["titre"].' </textarea>
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Secteur AGRICOLE</label></div>
+                                                            <textarea id="pre_ass" name="p" type="text" class="form-control" value="" placeholder=""disabled>'.$olds3[$x-1]["val"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                   <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre2</label></div>
+                                                            <textarea  id="nom_ass" name="intro" type="text"  class="form-control"  placeholder="" disabled>'.$olds3[$x-1]["titre2"].' </textarea>
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Autres secteurs </label></div>
+                                                            <textarea id="pre_ass" name="p" type="text" class="form-control" value="" placeholder=""disabled>'.$olds3[$x-1]["val2"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                   <div class="row mb-1">
+                                                    <div class="col-5 offset-1">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="titre" class="control-label mb-1">Titre3</label></div>
+                                                            <textarea  id="nom_ass" name="intro" type="text"  class="form-control"  placeholder="" disabled>'.$olds3[$x-1]["titre3"].' </textarea>
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="form-group">
+                                                            <div style="text-align: center;"><label for="slogan" class="control-label mb-1">Autres services</label></div>
+                                                            <textarea id="pre_ass" name="p" type="text" class="form-control" value="" placeholder=""disabled>'.$olds3[$x-1]["val3"].'</textarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                              
+                                               
+                                                
+                                            </div>
+
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <input type="submit" class="btn btn-outline-success" value="restaurer">
+                                            <input type="hidden" name="form" value="restVal">
+                                            <input type="hidden" name="lang" value="'.$item["lang"].'">
+                                            <input type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close"  value="Annuler">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                                     </div>
                                     
                                 </div>

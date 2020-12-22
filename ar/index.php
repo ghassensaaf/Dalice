@@ -141,7 +141,14 @@ foreach ($home4 as $About4)
 				<div class="col-md-12">
 					<div class="section-title text-center">
 						<h2 style="color:#ce292c;">معلومات عنا</h2>
-<p><?php echo $About['intro'] ?></p>
+                        <?php
+                        $values=explode("--",$About['intro']);
+                        //                            var_dump($values);
+                        for ($i=0;$i<sizeof($values);$i++)
+                        {
+                            echo'<p> '.$values[$i].'</p>';
+                        }
+                        ?>
 					</div>
 				</div>
 			</div>
@@ -158,11 +165,15 @@ foreach ($home4 as $About4)
 						</p>
 						<h4 class="text-right" style="color:#ce292c; margin-top:15px;"> <b>قيمنا الأساسية</b> </h4>
 						<ul class="withArrow">
-							<li class="text-right">النزاهة والشفافية <span class="fa fa-angle-left"></span>       </li>
-							<li class="text-right">النمو المستمر <span class="fa fa-angle-left"></span>       </li>
-							<li class="text-right">لابتكار <span class="fa fa-angle-left"></span>       </li>
-							<li class="text-right">لاحتراف <span class="fa fa-angle-left"></span>       </li>
-							<li class="text-right"> المسؤولية والموثوقية <span class="fa fa-angle-left"></span>       </li>
+                            <?php
+                            $values=explode("--",$About['vals']);
+                            //                            var_dump($values);
+                            for ($i=0;$i<sizeof($values);$i++)
+                            {
+                                echo'<li class="text-right">'.$values[$i].'<span class="fa fa-angle-left"></span> </li>';
+                            }
+                            ?>
+
 						</ul>
 
 					</div>
@@ -189,10 +200,14 @@ foreach ($home4 as $About4)
               </div>
               <div class="card-content carta">
                 <ul style="margin-left:15px; direction: rtl;">
-                	<li class="text-right" style="list-style-type: circle;">توفير وتقديم أفضل المنتجات لعملائنا في السوق والتي ستؤدي إلى نجاحهم</li>
-                	<li class="text-right" style="list-style-type: circle;">ننشئ علاقة تجارية بين الدول</li>
-                	<li class="text-right" style="list-style-type: circle;">وضع عملائنا على اتصال بأفضل الشركاء</li>
-                	<li class="text-right" style="list-style-type: circle;">نحن نعمل على صياغة روح جديدة لتطوير الأعمال مصممة خصيصًا لتناسب تفضيلات العملاء وأهداف العمل</li>
+                    <?php
+                    $values=explode("--",$About2['mis']);
+                    //                            var_dump($values);
+                    for ($i=0;$i<sizeof($values);$i++)
+                    {
+                        echo'<li  class="text-right" style="list-style-type: circle;"> '.$values[$i].'</li>';
+                    }
+                    ?>
                 </ul>
               </div>
             </div>
@@ -206,7 +221,14 @@ foreach ($home4 as $About4)
               </div>
               <div class="card-content carta">
 								<ul style="margin-left:15px; direction: rtl;">
-									<li style="list-style-type: circle;"><?php echo $About2['vis'] ?></li>
+                                    <?php
+                                    $values=explode("--",$About2['vis']);
+                                    //                            var_dump($values);
+                                    for ($i=0;$i<sizeof($values);$i++)
+                                    {
+                                        echo'<li style="list-style-type: circle;"> '.$values[$i].'</li>';
+                                    }
+                                    ?>
 								</ul>
               </div>
             </div>
@@ -232,7 +254,14 @@ foreach ($home4 as $About4)
               <h3><?php echo $About3['titre'] ?></h3>
 							<div class="line"></div>
               <ul style="direction: rtl">
-              	<li> <?php echo $About3['val'] ?></li>
+                  <?php
+                  $values=explode("--",$About3['val']);
+                  //                            var_dump($values);
+                  for ($i=0;$i<sizeof($values);$i++)
+                  {
+                      echo'<li> '.$values[$i].'</li>';
+                  }
+                  ?>
               </ul>
             </div>
           </div>
@@ -250,11 +279,14 @@ foreach ($home4 as $About4)
               <h3><?php echo $About3['titre3'] ?></h3>
 							<div class="line"></div>
               <ul style="direction: rtl">
-              	<li class="text-right"><?php echo $About3['val3'] ?>
-					<ul style="direction: rtl">
-										<li class="text-right"><span class="fa fa-angle-left"></span> تونس</li>
-										<li class="text-right"><span class="fa fa-angle-left"></span>ايطاليا</li>
-									</ul>
+                  <?php
+                  $values=explode("--",$About3['val3']);
+                  //                            var_dump($values);
+                  for ($i=0;$i<sizeof($values);$i++)
+                  {
+                      echo'<li class="text-right"><span class="fa fa-angle-left"></span> '.$values[$i].'</li>';
+                  }
+                  ?>
 								</li>
               </ul>
             </div>
@@ -281,7 +313,14 @@ foreach ($home4 as $About4)
 						<h5 class="widgetheading">تفاصيل الاتصال الخاصة بنا</h5>
 						<address>
 							<strong>Dalice ITC</strong><br>
-                            <?php echo $About4['adresse'] ?></address>
+                            <?php
+                            $values=explode("--",$About4['adresse']);
+                            //                            var_dump($values);
+                            for ($i=0;$i<sizeof($values);$i++)
+                            {
+                                echo'<p>'.$values[$i].'</p>';
+                            }
+                            ?></address>
 						<p>
 							<i class="icon-phone"></i> <a href="tel:+393713729649"><?php echo $About4['tel'] ?></a>  <br>
 							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com"><?php echo $About4['email'] ?></a>

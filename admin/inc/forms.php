@@ -110,7 +110,7 @@ echo basename($_FILES['img_vis']['name']);
 
 else if($_POST["form"]=='editVal')
 {
-    $f->edit_act_item($_POST["Lang"],$_POST["titre1"],$_POST["val"],$_POST["titre2"],$_POST["val2"],$_POST["titre3"],$_POST["val3"]);
+    $f->edit_act_item($_POST["lang"],$_POST["titre1"],$_POST["val"],$_POST["titre2"],$_POST["val2"],$_POST["titre3"],$_POST["val3"]);
     header("location:../home.php");
 }
 
@@ -124,7 +124,21 @@ else if($_POST["form"]=='restAbout')
     $f->rest_About_item($_POST["lang"]);
    header("location:../home.php");
 }
-
+else if($_POST["form"]=='restMisVis')
+{
+    $f->rest_MisVis_item($_POST["lang"]);
+    header("location:../home.php");
+}
+else if($_POST["form"]=='restVal')
+{
+    $f->rest_act_item($_POST["lang"]);
+    header("location:../home.php");
+}
+else if($_POST["form"]=='restCord')
+{
+    $f->rest_Cord_item($_POST["id"]);
+    header("location:../contactdet.php");
+}
 
 
 

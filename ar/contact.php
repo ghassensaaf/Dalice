@@ -112,15 +112,15 @@ foreach ($home4 as $About4)
 						</p>
 						<div style="margin-top: 50px" class="container ">
 							<div class="row">
-								<div class="col-md-2 pull-right"><p style="color: #ce292c"> <b> الهاتف </b><i class="fa fa-phone"></i></p></div>
+								<div class="col-md-2 pull-right"><p style="color: #ce292c"> <b> الهاتف </b><span class="iconify" data-icon="mdi-phone" data-inline="true"></span></p></div>
 								<div class="col-md-2 pull-right"><p><?php echo $About4['tel'] ?></p></div>
 							</div>
 							<div class="row">
-								<div class="col-md-2 pull-right"><p style="color: #ce292c"> <b> الواتساب </b><i class="fa fa-whatsapp"></i></p></div>
+								<div class="col-md-2 pull-right"><p style="color: #ce292c"> <b> الواتساب </b><span class="iconify" data-icon="ion-logo-whatsapp" data-inline="true"></span></p></div>
 								<div class="col-md-2 pull-right"><p><?php echo $About4['tel'] ?></p></div>
 							</div>
 							<div class="row">
-								<div class="col-md-2 pull-right"><p style="color: #ce292c"> <b> البريد الإلكتروني </b><i class="fa fa-mail-reply-all"></i></p></div>
+								<div class="col-md-2 pull-right"><p style="color: #ce292c"> <b> البريد الإلكتروني </b><span class="iconify" data-icon="mdi-email" data-inline="true"></span></p></div>
 								<div class="col-md-2 pull-right"><p><?php echo $About4['email'] ?></p></div>
 							</div>
 						</div>
@@ -184,7 +184,14 @@ foreach ($home4 as $About4)
 						<h5 class="widgetheading">تفاصيل الاتصال الخاصة بنا</h5>
 						<address>
 							<strong>Dalice ITC</strong><br>
-                            <?php echo $About4['adresse'] ?></address>
+                            <?php
+                            $values=explode("--",$About4['adresse']);
+                            //                            var_dump($values);
+                            for ($i=0;$i<sizeof($values);$i++)
+                            {
+                                echo'<p>'.$values[$i].'</p>';
+                            }
+                            ?></address>
 						<p>
 							<i class="icon-phone"></i> <a href="tel:+393713729649"><?php echo $About4['tel'] ?></a>  <br>
 							<i class="icon-envelope-alt"></i> <a href="mailto:info@ditcsrl.com"><?php echo $About4['email'] ?></a>
@@ -243,6 +250,7 @@ foreach ($home4 as $About4)
 <script src="../js/jquery.magnific-popup.min.js"></script>
 <script src="../js/animate.js"></script>
 <script src="../js/custom.js"></script>
+<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 <!-- Contact Form JavaScript Files -->
 <script type="text/javascript" src="../assets/js/form-validator.min.js"></script>
 <script type="text/javascript" src="../assets/js/contact-form-script.js"></script>
